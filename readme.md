@@ -204,4 +204,3 @@ The code block after step 4 looks something like this:
 
 Credit: [thiminhnhut/latex](https://github.com/thiminhnhut/latex/blob/master/tips/listings/tiengviet-trong-listings/tiengviet-trong-listings.tex)
 
-- [^1]: Please remember that these are **steps**, not **options**.
