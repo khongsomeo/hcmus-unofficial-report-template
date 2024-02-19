@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+
+\usepackage{hcmus-report-template}
+
+% Disable indentation on new paragraphs
+\setlength{\parindent}{0pt}
+
+% Line spacing 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Optional: graphic path
+% \graphicspath{PATH_TO_GRAPHIC_FOLDER}
+
+% To use Times font family, uncomment this row
+% \usepackage{mathptmx}
+
+% To use roman section / subsection, uncomment these rows
+% \renewcommand{\thesection}{\Roman{section}}
+% \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+
+% Define course name, report name and report title.
+\newcommand{\coursename}{Môn Học Gì Đấy}
+\newcommand{\reportname}{Tên Báo Cáo Gì Đấy}
+\newcommand{\reporttitle}{Báo cáo Bài Tập Gì Đấy}
+
+\newcommand{\studentname}{Quan, Tran Hoang (19120338)\\meadoge(19120000)\\Hwang S. Wan (19120000)}
+\newcommand{\teachername}{GS. TS. Nguyễn Văn Hướng Dẫn}
+
+% Header
+\lhead{\reporttitle}
+\rhead{
+Trường Đại học Khoa học Tự nhiên - ĐHQG HCM\\
+\coursename
+}
+
+% Footer
+\newcommand{\leftfooter}{\LaTeX\ by \href{https://github.com/trhgquan}{Quan, Tran Hoang}}
+\lfoot{\leftfooter}
+
+% ============ DOCUMENT ============
+\begin{document}
+\input{content/title.tex}
+	
+\tableofcontents
+\pagebreak
+
+\input{content/section}
+\input{content/hinhanh}
+\input{content/bangbieu}
+\input{content/congthuctoan}
+\input{content/thuattoan}
+\input{content/code}
+\input{content/ngonngu}
+\input{content/cite}
+
+% References
+\input{ref/ref.tex}
+
+% Appendix
+\appendix
+% Add \cleardoublepage to move appendices to next page.
+\input{appendix/appendix.tex}
+\end{document}
