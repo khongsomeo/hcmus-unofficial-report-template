@@ -9,9 +9,12 @@ Main files: `main.tex` (i.e. compile this file in Overleaf or TexStudio to rende
 
 ## Additional note
 
-### Compiling
+### Compiling on local machine
 
-These templates would work (best) in TexStudio or Overleaf. However, `textlive` on Ubuntu does **not** install full LaTeX packages. In order to render some packages (e.g. `algorithm`) offline, you **must** install the `texlive-full` package (which is around 5GB!). Therefore we would recommend you using Overleaf for the best experience.
+1. Install TeXStudio `sudo apt-get install texstudio`
+2. Install TeXLive: `sudo apt-get install texlive-full`
+
+**Important:** `textlive` package does **not** include all LaTeX packages. In order to render some components (e.g. `algorithm`), you **must** install the `texlive-full` package (which is around 5GB!). Therefore we would recommend you using Overleaf for the best experience.
 
 ### Vietnamese Code Listing
 
