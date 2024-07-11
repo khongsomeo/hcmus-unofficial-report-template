@@ -5,7 +5,7 @@ This repository stores the source code for these templates:
 - `report`: [Report Template on Overleaf](https://www.overleaf.com/latex/templates/hcmus-report-template/zyrhmsxynwqs)
 - `book`: (updating)
 
-Main files: `main.tex` (i.e. compile this file in Overleaf or TexStudio to render the full document).
+Main files (applied to all templates): `main.tex` (i.e. compile this file in Overleaf or TexStudio to render the full document).
 
 ## Additional note
 

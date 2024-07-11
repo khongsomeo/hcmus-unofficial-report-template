@@ -8,17 +8,20 @@ Dùng gói \texttt{algorithm} và \texttt{algpseudocode} để gõ đoạn thu�
 \Function {GaChoSoNaoLonHon}{\textit{ga}, \textit{cho}}
 \State $soGa \gets 0$
 \State $soCho \gets 0$
-\For {$i \in [0, |soGa| - 1]$}
+\For {$i \in [0, |ga| - 1]$}
 \State $soGa \gets soGa + 1$
 \EndFor
-\For {$i \in [0, |soCho| - 1]$}
+\For {$i \in [0, |cho| - 1]$}
 \State $soCho \gets soCho + 1$
 \EndFor
 
 \If {$soGa > soCho$}
 \State\Return $soGa$
-\EndIf
+\ElsIf {$soGa < soCho$}
 \State\Return $soCho$
+\Else 
+\State\Return \text{"bang nhau"}
+\EndIf
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
