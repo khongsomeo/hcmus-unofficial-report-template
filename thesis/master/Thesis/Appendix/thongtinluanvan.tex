@@ -1,99 +1,37 @@
-% ========================================================================================= %
-% CHÚ Ý: TRANG THÔNG TIN LUẬN VĂN (THESIS INFORMATION)                                       %
-% - Các thông tin trong khối "thesisinfo" được tự động cập nhật từ main.tex.                 %
-% - Học viên CHỈ viết phần Tóm tắt, Kết quả mới, Khả năng ứng dụng vào các mục TODO dưới đây. %
-% ========================================================================================= %
-\newenvironment{thesisinfo}{\par\setlength{\parindent}{0pt}}{\par}
-\newcommand{\infoitem}[2]{#1: #2\\[0.25cm]}
+\begin{trangthongtinluanvan}
+    \begin{tomtatvi}
+        % TODO: Học viên điền tóm tắt nội dung luận văn (Tiếng Việt) dưới đây.
+        Luận văn giải quyết bài toán $\ldots$ Theo đó, luận văn đề xuất các hướng tiếp cận sau:
 
-% Tieng Viet
-\chapter*{\vspace{-60pt}\centering\large\MakeUppercase{Trang thông tin luận văn}}
-\addcontentsline{toc}{chapter}{Trang thông tin luận văn}
-\vspace{-15pt}
-\begin{thesisinfo}
-    \infoitem{Tên đề tài luận văn}{\tenKhongXuongDong{\tenKLTiengViet}}
-    \infoitem{Ngành}{\tenNganhTiengViet}
-    \infoitem{Mã số ngành}{\maNganh}
-    \infoitem{Họ tên học viên cao học}{\tenSVTiengViet}
-    \infoitem{Khóa đào tạo}{\khoaDaoTao}
-    \infoitem{Người hướng dẫn khoa học}{\tenGVHDTiengViet}
-    \infoitem{Cơ sở đào tạo}{Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM}
-\end{thesisinfo}
-\vspace{-30pt}
-\section{\MakeUppercase{tóm tắt nội dung luận văn}}
+        \begin{enumerate}
+            \item Hướng tiếp cận 1: $\ldots$
+            \item Hướng tiếp cận 2: $\ldots$
+        \end{enumerate}
+    \end{tomtatvi}
 
-% TODO: Học viên điền tóm tắt nội dung luận văn (Tiếng Việt) dưới đây.
-Luận văn giải quyết bài toán $\ldots$ Theo đó, luận văn đề xuất các hướng tiếp cận sau:
+    \begin{ketquamoivi}
+        % TODO: Học viên điền các đóng góp/kết quả mới đạt được trong luận văn (Tiếng Việt) dưới đây.
+        \begin{enumerate}
+            \item Kết quả 1: $\ldots$
+            \item Kết quả 2: $\ldots$
+        \end{enumerate}
+    \end{ketquamoivi}
 
-\begin{enumerate}
-    \item Hướng tiếp cận 1: $\ldots$
-    \item Hướng tiếp cận 2: $\ldots$
-\end{enumerate}
+    \begin{ungdungvi}
+        % TODO: Học viên điền khả năng ứng dụng thực tiễn và hướng nghiên cứu tiếp theo (Tiếng Việt) dưới đây.
+    \end{ungdungvi}
+\end{trangthongtinluanvan}
 
-\section{\MakeUppercase{những kết quả mới của luận văn}}
+\begin{trangthesisinformation}
+    \begin{summaryen}
+        % TODO: Student writes the thesis summary (English) below.
+    \end{summaryen}
 
-% TODO: Học viên điền các đóng góp/kết quả mới đạt được trong luận văn (Tiếng Việt) dưới đây.
-\begin{enumerate}
-    \item Kết quả 1: $\ldots$
-    \item Kết quả 2: $\ldots$
-\end{enumerate}
+    \begin{noveltyen}
+        % TODO: Student writes the novelty of the thesis (English) below.
+    \end{noveltyen}
 
-\section{\MakeUppercase{khả năng ứng dụng trong thực tiễn và các vấn đề cần tiếp tục nghiên cứu}}
-
-% TODO: Học viên điền khả năng ứng dụng thực tiễn và hướng nghiên cứu tiếp theo (Tiếng Việt) dưới đây.
-
-\begin{minipage}[h]{.50\textwidth}
-    \centering
-    \MakeUppercase{\bfseries tập thể cán bộ hướng dẫn}
-\end{minipage}
-\begin{minipage}[h]{.45\textwidth}
-    \centering
-    \MakeUppercase{\bfseries học viên cao học}
-\end{minipage}
-\vspace{3.5cm}
-\begin{center}
-    \MakeUppercase{\bfseries xác nhận của cơ sở đào tạo\\hiệu trưởng}
-\end{center}
-
-\pagebreak
-
-% Tieng Anh
-\chapter*{\vspace{-60pt}\centering\large\MakeUppercase{thesis information}}
-\addcontentsline{toc}{chapter}{THESIS INFORMATION}
-\vspace{-15pt}
-\begin{thesisinfo}
-    \infoitem{Thesis title}{\tenKhongXuongDong{\tenKLTiengAnh}}
-    \infoitem{Speciality}{\tenNganhTiengAnh}
-    \infoitem{Code}{\maNganh}
-    \infoitem{Name of Master Student}{\tenSVTiengAnh}
-    \infoitem{Academic year}{\khoaDaoTao}
-    \infoitem{Supervisor}{\tenGVHDTiengAnh}
-    \infoitem{At}{VNUHCM - University of Science}
-\end{thesisinfo}
-\vspace{-30pt}
-
-\setcounter{section}{0}
-\section{\MakeUppercase{summary}}
-
-% TODO: Student writes the thesis summary (English) below.
-
-\section{\MakeUppercase{novelty of thesis}}
-
-% TODO: Student writes the novelty of the thesis (English) below.
-
-\section{\MakeUppercase{applications/ applicability/ perspective}}
-
-% TODO: Student writes the practical applications and future research directions (English) below.
-
-\begin{minipage}[h]{.50\textwidth}
-    \centering
-    \MakeUppercase{\bfseries supervisor}
-\end{minipage}
-\begin{minipage}[h]{.45\textwidth}
-    \centering
-    {\bfseries Master \MakeUppercase{student}}
-\end{minipage}
-\vspace{3.5cm}
-\begin{center}
-    \MakeUppercase{\bfseries certification \\ university of science \\ president}
-\end{center}
+    \begin{applicationsen}
+        % TODO: Student writes the practical applications and future research directions (English) below.
+    \end{applicationsen}
+\end{trangthesisinformation}

@@ -310,3 +310,101 @@
   \end{center}
   \end{titlepage}
 }
+
+% ========================================================================================= %
+% Trang thông tin luận văn (Thesis Information Environments)                                 %
+% ========================================================================================= %
+
+\newenvironment{thesisinfo}{\par\setlength{\parindent}{0pt}}{\par}
+\newcommand{\infoitem}[2]{#1: #2\\[0.25cm]}
+
+% Môi trường trang thông tin luận văn Tiếng Việt
+\newenvironment{trangthongtinluanvan}{%
+  \chapter*{\vspace{-60pt}\centering\large\MakeUppercase{Trang thông tin luận văn}}
+  \addcontentsline{toc}{chapter}{Trang thông tin luận văn}
+  \vspace{-15pt}
+  \begin{thesisinfo}
+      \infoitem{Tên đề tài luận văn}{\tenKhongXuongDong{\tenKLTiengViet}}
+      \infoitem{Ngành}{\tenNganhTiengViet}
+      \infoitem{Mã số ngành}{\maNganh}
+      \infoitem{Họ tên học viên cao học}{\tenSVTiengViet}
+      \infoitem{Khóa đào tạo}{\khoaDaoTao}
+      \infoitem{Người hướng dẫn khoa học}{\tenGVHDTiengViet}
+      \infoitem{Cơ sở đào tạo}{Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM}
+  \end{thesisinfo}
+  \vspace{-30pt}
+}{%
+  \vspace{0.5cm}%
+  \begin{minipage}[h]{.50\textwidth}
+      \centering
+      \MakeUppercase{\bfseries tập thể cán bộ hướng dẫn}
+  \end{minipage}
+  \begin{minipage}[h]{.45\textwidth}
+      \centering
+      \MakeUppercase{\bfseries học viên cao học}
+  \end{minipage}
+  \vspace{3.5cm}
+  \begin{center}
+      \MakeUppercase{\bfseries xác nhận của cơ sở đào tạo\\hiệu trưởng}
+  \end{center}
+  \pagebreak
+}
+
+% Môi trường các phần nội dung Tiếng Việt
+\newenvironment{tomtatvi}{%
+  \section{\MakeUppercase{tóm tắt nội dung luận văn}}
+}{}
+
+\newenvironment{ketquamoivi}{%
+  \section{\MakeUppercase{những kết quả mới của luận văn}}
+}{}
+
+\newenvironment{ungdungvi}{%
+  \section{\MakeUppercase{khả năng ứng dụng trong thực tiễn và các vấn đề cần tiếp tục nghiên cứu}}
+}{}
+
+% Môi trường trang thông tin luận văn Tiếng Anh
+\newenvironment{trangthesisinformation}{%
+  \chapter*{\vspace{-60pt}\centering\large\MakeUppercase{thesis information}}
+  \addcontentsline{toc}{chapter}{THESIS INFORMATION}
+  \vspace{-15pt}
+  \begin{thesisinfo}
+      \infoitem{Thesis title}{\tenKhongXuongDong{\tenKLTiengAnh}}
+      \infoitem{Speciality}{\tenNganhTiengAnh}
+      \infoitem{Code}{\maNganh}
+      \infoitem{Name of Master Student}{\tenSVTiengAnh}
+      \infoitem{Academic year}{\khoaDaoTao}
+      \infoitem{Supervisor}{\tenGVHDTiengAnh}
+      \infoitem{At}{VNUHCM - University of Science}
+  \end{thesisinfo}
+  \vspace{-30pt}
+  \setcounter{section}{0}
+}{%
+  \vspace{0.5cm}%
+  \begin{minipage}[h]{.50\textwidth}
+      \centering
+      \MakeUppercase{\bfseries supervisor}
+  \end{minipage}
+  \begin{minipage}[h]{.45\textwidth}
+      \centering
+      {\bfseries Master \MakeUppercase{student}}
+  \end{minipage}
+  \vspace{3.5cm}
+  \begin{center}
+      \MakeUppercase{\bfseries certification \\ university of science \\ president}
+  \end{center}
+}
+
+% Môi trường các phần nội dung Tiếng Anh
+\newenvironment{summaryen}{%
+  \section{\MakeUppercase{summary}}
+}{}
+
+\newenvironment{noveltyen}{%
+  \section{\MakeUppercase{novelty of thesis}}
+}{}
+
+\newenvironment{applicationsen}{%
+  \section{\MakeUppercase{applications/ applicability/ perspective}}
+}{}
+
