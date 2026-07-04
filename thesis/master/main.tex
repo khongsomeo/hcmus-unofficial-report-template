@@ -1,0 +1,106 @@
+% Luận văn thạc sĩ KHMT
+% Dựa trên Template KLTN cho SV trường ĐHKHTN
+% Tác giả: Thầy NQMinh  (nqminh@fit.hcmus.edu.vn)  - 2016
+%               BHThong (bhthong@fit.hcmus.edu.vn) - 2020
+%               THQuan  (thquan@fit.hcmus.edu.vn)  - 2026
+%
+%
+% Hướng dẫn: Điền thông tin vào khung CHÚ Ý bên dưới.
+% Build: pdflatex > bibtex > pdflatex > pdflatex
+%        Hoặc chạy: bash thesis-build.sh
+
+\documentclass{hcmusthesis}
+
+% ========================================================================================= %
+% CHÚ Ý: Thông tin chung về KLTN - sinh viên điền vào đây để tự động update các trang khác  %
+% Cú pháp lệnh thiết lập: \setThongTin{Tiếng Việt}{English}                                 %
+% ========================================================================================= %
+\setHoVaTen{Họ và Tên Học Viên}{Full Name of Student}               % Tên học viên: {Tiếng Việt}{English} (dùng ~ thay khoảng trắng)
+\setMSSV{XXCXXXXX}                                                   % Mã số học viên
+\setKhoaDaoTao{XX/20XX}                                              % Khóa đào tạo
+\setTenKL{Tên~đề~tài~luận~văn~thạc~sĩ}{Thesis Title in English}      % Tên đề tài: {Tiếng Việt}{English} (dùng ~ thay khoảng trắng)
+\setMaNganh{8.48.01.01}                                              % Mã số ngành (dùng chung cho cả tiếng Anh và tiếng Việt)
+\setTenNganh{Tên ngành}{Speciality Name}                             % Tên ngành: {Tiếng Việt}{English}
+\setTenGVHD{Học hàm. Họ và Tên GVHD}{Title. Full Name of Supervisor}% Người hướng dẫn: {Tiếng Việt}{English}
+\setTenBM{Tên bộ môn}                                                % Tên bộ môn
+\setDiaChiNgayThang{Tp. Hồ Chí Minh -- Năm 20XX}                     % Địa chỉ và ngày tháng bảo vệ
+
+\hypersetup{
+    pdfauthor={\tenSVTiengViet},
+    pdftitle={\tenKLTiengViet},
+    % pdfkeywords={TODO: Từ khóa},
+    % pdfsubject={TODO: Tóm tắt}
+}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\input{Thesis/Title/title}
+
+\pagenumbering{roman} % Đánh số i, ii, iii, ...
+
+\input{Thesis/Appendix/reassurances}
+\addcontentsline{toc}{chapter}{Lời cam đoan}
+
+\input{Thesis/Appendix/thanks}
+\addcontentsline{toc}{chapter}{Lời cảm ơn}
+
+% Mục lục, danh sách hình, danh sách bảng
+\tableofcontents
+\addcontentsline{toc}{chapter}{Mục lục}
+\listoffigures
+\addcontentsline{toc}{chapter}{Danh mục các hình, biểu đồ}
+\listoftables
+\addcontentsline{toc}{chapter}{Danh mục các bảng số liệu}
+\printnoidxglossary[type=\acronymtype, title=Danh~mục các ký~hiệu và từ~viết~tắt]
+
+% Reset chapter number cho trang thông tin
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{section}{0}
+\titleformat*{\section}{\large\bfseries}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} 
+\input{Thesis/Appendix/thongtinluanvan}
+
+\clearpage
+
+% Đánh số chapter.section từ trang này
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\titleformat*{\section}{\Large\bfseries}
+\pagenumbering{arabic} % Đánh số 1, 2, 3, ...
+% Đếm đến subsection
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}} 
+
+% Các chương nội dung
+\input{Thesis/Chapter1-Introduction/chapter1}
+
+\input{Thesis/Chapter2-RelatedWorks/chapter2}
+
+\input{Thesis/Chapter3/chapter3}
+
+\input{Thesis/Chapter4/chapter4}
+
+\input{Thesis/Chapter5-Conclusion/chapter5}
+
+% Công trình của tác giả (nếu không có thì comment 02 dòng dưới)
+\input{Thesis/Appendix/publish}
+\addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}
+
+% In tài liệu tham khảo
+\printbibheading[title={Tài liệu tham khảo}]
+\addcontentsline{toc}{chapter}{Tài liệu tham khảo}
+
+\printbibliography[heading=subbibliography, title={Tiếng Việt}, keyword=Viet, resetnumbers=true]
+
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{default}{family-given}
+
+\printbibliography[heading=subbibliography, title={Tiếng Anh}, notkeyword=Viet, resetnumbers=1] 
+% ===================================================================== %
+% CHÚ Ý: phải gán lại resetnumbers=số tài liệu tham khảo tiếng Việt + 1 %
+% ===================================================================== %
+
+% Phần phụ lục
+\appendix
+\input{Thesis/Appendix/appendix-a}
+
+\end{document}
