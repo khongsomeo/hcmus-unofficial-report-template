@@ -5,8 +5,8 @@
 \subsubsection{Cài đặt offline}
 Template này yêu cầu cài đặt một số gói (package) nâng cao cho TexStudio:
 \begin{itemize}
-\item Để gõ thuật toán: \texttt{algorithm} và \texttt{algpseudocode}
-\item Để nhúng (chèn) code: \texttt{listings}
+    \item Để gõ thuật toán: \texttt{algorithm} và \texttt{algpseudocode}
+    \item Để nhúng (chèn) code: \texttt{listings}
 \end{itemize}
 Các gói này được cài đặt thông qua lệnh
 \begin{lstlisting}[language=sh]
@@ -18,14 +18,14 @@ Tuy nhiên kích thước gói đâu đó vào khoảng 5GB (!). Vì vậy tốt
 Tham khảo font typefaces tại \href{https://www.overleaf.com/learn/latex/Font_typefaces}{link này}.
 
 \subsubsection{Đánh số chỉ mục bằng chữ số La Mã}
-Mở file \texttt{main.tex} và bỏ comment dòng 
+Mở file \texttt{main.tex} và bỏ comment dòng
 \begin{lstlisting}[language=tex]
 % \renewcommand{\thesection}{\Roman{section}}
 % \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}  
 \end{lstlisting}
 
 \subsection{Ví dụ}
-Ngày xửa ngày xưa, ở vương quốc VNUHCM - US, có một chàng hoàng tử ngồi cắm đầu viết doc\footnote{Đây là footnote, chú thích lại những gì cần chú ý.}.\\
+Ngày xửa ngày xưa, ở vương quốc VNUHCM {-} US, có một chàng hoàng tử ngồi cắm đầu viết doc\footnote{Đây là footnote, chú thích lại những gì cần chú ý.}.\\
 Mặc định muốn xuống dòng chỉ cần dùng $\backslash\backslash$  (2 lần dấu xẹt huyền).\\
 Nếu bạn muốn thụt đầu dòng khi bắt đầu paragraph mới, vào \texttt{main.tex} và disble dòng
 \begin{lstlisting}[language=tex]

@@ -1,0 +1,140 @@
+% Luận văn thạc sĩ KHMT
+% Dựa trên Template KLTN cho SV trường ĐHKHTN
+% Tác giả: Thầy NQMinh  (nqminh@fit.hcmus.edu.vn)  - 2016
+%               BHThong (bhthong@fit.hcmus.edu.vn) - 2020
+%               THQuan  (thquan@fit.hcmus.edu.vn)  - 2026
+%
+%
+% Hướng dẫn: Điền thông tin vào khung CHÚ Ý bên dưới.
+% Build: pdflatex > bibtex > pdflatex > pdflatex
+%        Hoặc chạy: bash thesis-build.sh
+
+\documentclass{hcmusthesis}
+
+% ========================================================================================= %
+% CHÚ Ý: THÔNG TIN CHUNG VỀ LUẬN VĂN - Học viên điền vào đây để tự động cập nhật các trang  %
+% ----------------------------------------------------------------------------------------- %
+% [!] CÁC TRƯỜNG DƯỚI ĐÂY KHÔNG ĐƯỢC CHỨA DẤU XUỐNG DÒNG (\\), ngoại trừ tên luận văn thạc sĩ %
+% ========================================================================================= %
+
+% Tên học viên: {Tiếng Việt}{Tiếng Anh} (Không dùng \\)
+\setHoVaTen{Nguyễn~Văn~A}{Nguyen Van A}
+
+% Mã số học viên (MSSV) (Không dùng \\)
+\setMSSV{22C11001}
+
+% Khóa đào tạo (Ví dụ: 2022/2024) (Không dùng \\)
+\setKhoaDaoTao{2022/2024}
+
+% Tên đề tài luận văn: {Tiếng Việt}{Tiếng Anh}
+% [!] Được phép chứa dấu xuống dòng (\\) để tự động căn chỉnh trang bìa
+\setTenKL{Nghiên~cứu~phát~triển~hệ~thống\\trí~tuệ~nhân~tạo}{Research and Development of Artificial Intelligence Systems}
+
+% Mã số ngành (Không dùng \\)
+\setMaNganh{8.48.01.01}
+
+% Tên ngành đào tạo: {Tiếng Việt}{Tiếng Anh} (Không dùng \\)
+\setTenNganh{Khoa học Máy tính}{Computer Science}
+
+% Cán bộ hướng dẫn khoa học: {Tiếng Việt}{Tiếng Anh} (Không dùng \\)
+% [!] Nếu có từ 2 cán bộ hướng dẫn trở lên, gọi dòng \addTenGVHD nhiều lần liên tiếp
+\addTenGVHD{PGS. TS. Nguyễn Văn B}{Assoc. Prof. Dr. Nguyen Van B}
+\addTenGVHD{TS. Trần Thị C}{Dr. Tran Thi C}
+
+% Tên bộ môn (Không dùng \\)
+\setTenBM{Công nghệ Tri thức}
+
+% Địa điểm và ngày tháng bảo vệ (Không dùng \\)
+\setDiaChiNgayThang{Tp. Hồ Chí Minh -- Năm 2026}
+
+% ========================================================================================= %
+% CÁC HÀM GETTER TỰ ĐỘNG SINH (Có thể dùng ở bất kỳ trang nào trong luận văn):
+% - Tên học viên: \tenSVTiengViet, \tenSVTiengAnh
+% - MSSV: \mssv
+% - Khóa đào tạo: \khoaDaoTao
+% - Đề tài luận văn: \tenKLTiengViet (chứa \\), \tenKLTiengAnh, \tenKhongXuongDong{\tenKLTiengViet} (bỏ \\)
+% - Mã ngành & Tên ngành: \maNganh, \tenNganhTiengViet, \tenNganhTiengAnh
+% - Danh sách CBHD: \listSupervisors (Tiếng Việt, dạng A, B và C), \listSupervisorsEnglish (Tiếng Anh)
+% - Bộ môn: \tenBM
+% - Ngày tháng: \diachiNgayThang
+% ========================================================================================= %
+
+\hypersetup{
+    pdfauthor={\tenSVTiengViet},
+    pdftitle={\tenKLTiengViet},
+    % pdfkeywords={TODO: Từ khóa},
+    % pdfsubject={TODO: Tóm tắt}
+}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\makethesiscover
+
+\pagenumbering{roman} % Đánh số i, ii, iii, ...
+
+\input{Thesis/Appendix/reassurances}
+\addcontentsline{toc}{chapter}{Lời cam đoan}
+
+\input{Thesis/Appendix/thanks}
+\addcontentsline{toc}{chapter}{Lời cảm ơn}
+
+% Mục lục, danh sách hình, danh sách bảng
+\tableofcontents
+\addcontentsline{toc}{chapter}{Mục lục}
+\listoffigures
+\addcontentsline{toc}{chapter}{Danh mục các hình, biểu đồ}
+\listoftables
+\addcontentsline{toc}{chapter}{Danh mục các bảng số liệu}
+\printnoidxglossary[type=\acronymtype, title=Danh~mục các ký~hiệu và từ~viết~tắt]
+
+% Reset chapter number cho trang thông tin
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{section}{0}
+\titleformat*{\section}{\large\bfseries}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} 
+\input{Thesis/Appendix/thongtinluanvan}
+
+\clearpage
+
+% Đánh số chapter.section từ trang này
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\titleformat*{\section}{\Large\bfseries}
+\pagenumbering{arabic} % Đánh số 1, 2, 3, ...
+% Đếm đến subsection
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}} 
+
+% Các chương nội dung
+\input{Thesis/Chapter1-Introduction/chapter1}
+
+\input{Thesis/Chapter2-RelatedWorks/chapter2}
+
+\input{Thesis/Chapter3/chapter3}
+
+\input{Thesis/Chapter4/chapter4}
+
+\input{Thesis/Chapter5-Conclusion/chapter5}
+
+% Công trình của tác giả (nếu không có thì comment 02 dòng dưới)
+\input{Thesis/Appendix/publish}
+\addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}
+
+% In tài liệu tham khảo
+\printbibheading[title={Tài liệu tham khảo}]
+\addcontentsline{toc}{chapter}{Tài liệu tham khảo}
+
+\printbibliography[heading=subbibliography, title={Tiếng Việt}, keyword=Viet, resetnumbers=true]
+
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{default}{family-given}
+
+\printbibliography[heading=subbibliography, title={Tiếng Anh}, notkeyword=Viet, resetnumbers=false] 
+% ===================================================================== %
+% CHÚ Ý: phải gán lại resetnumbers=số tài liệu tham khảo tiếng Việt + 1 %
+% ===================================================================== %
+
+% Phần phụ lục
+\appendix
+\input{Thesis/Appendix/appendix-a}
+
+\end{document}
