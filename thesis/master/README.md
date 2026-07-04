@@ -25,7 +25,7 @@ Open [main.tex](main.tex) and configure the student metadata block:
 \setKhoaDaoTao{K24/2024}
 
 % Tên đề tài luận văn: {Tiếng Việt}{Tiếng Anh}
-% [!] Chỉ phần Tiếng Việt được phép chứa \\ để tự động xuống dòng trên trang bìa
+% [!] Được phép chứa dấu xuống dòng (\\) để tự động căn chỉnh trang bìa
 \setTenKL{Nghiên~cứu~phát~triển~hệ~thống\\trí~tuệ~nhân~tạo}{Research and Development of Artificial Intelligence Systems}
 
 % Mã số ngành (Không dùng \\)
@@ -48,7 +48,7 @@ Open [main.tex](main.tex) and configure the student metadata block:
 
 > [!WARNING]
 > **Line Breaks (`\\`) Warning**
-> Line breaks (`\\`) are strictly forbidden in all metadata fields except for the Vietnamese thesis title (`\setTenKL` first argument). Putting line breaks in fields like student names or supervisor names will break the metadata processing and result in compilation errors.
+> Line breaks (`\\`) are strictly forbidden in all metadata fields except for the thesis title (`\setTenKL`). Putting line breaks in fields like student names or supervisor names will break the metadata processing and result in compilation errors.
 
 ---
 
@@ -114,3 +114,14 @@ pdflatex main
 > - If a citation belongs to a Vietnamese reference, add `keywords = {Viet}` to its BibTeX entry.
 > - If a citation is English/Foreign, omit the `keywords` field.
 > - Numbering continues sequentially across both sections automatically!
+
+---
+
+## 🐱 Diligent Graduate Student
+
+Here is a look at the most diligent PhD's student in the department working hard on their thesis:
+
+![Học viên chăm chỉ nhất HCMUS đang cày luận văn lúc 3h sáng](Materials/Figures/MeoVietLuanVan.png)
+*(Hình ảnh được tạo bởi Gemini / Image created by Gemini)*
+
+Good luck with your thesis!
