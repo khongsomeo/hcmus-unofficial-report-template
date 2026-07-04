@@ -12,18 +12,52 @@
 \documentclass{hcmusthesis}
 
 % ========================================================================================= %
-% CHÚ Ý: Thông tin chung về KLTN - sinh viên điền vào đây để tự động update các trang khác  %
-% Cú pháp lệnh thiết lập: \setThongTin{Tiếng Việt}{English}                                 %
+% CHÚ Ý: THÔNG TIN CHUNG VỀ LUẬN VĂN - Học viên điền vào đây để tự động cập nhật các trang  %
+% ----------------------------------------------------------------------------------------- %
+% [!] CÁC TRƯỜNG DƯỚI ĐÂY KHÔNG ĐƯỢC CHỨA DẤU XUỐNG DÒNG (\\), ngoại trừ tên luận văn thạc sĩ %
 % ========================================================================================= %
-\setHoVaTen{Họ và Tên Học Viên}{Full Name of Student}               % Tên học viên: {Tiếng Việt}{English} (dùng ~ thay khoảng trắng)
-\setMSSV{XXCXXXXX}                                                   % Mã số học viên
-\setKhoaDaoTao{XX/20XX}                                              % Khóa đào tạo
-\setTenKL{Tên~đề~tài~luận~văn~thạc~sĩ}{Thesis Title in English}      % Tên đề tài: {Tiếng Việt}{English} (dùng ~ thay khoảng trắng)
-\setMaNganh{8.48.01.01}                                              % Mã số ngành (dùng chung cho cả tiếng Anh và tiếng Việt)
-\setTenNganh{Tên ngành}{Speciality Name}                             % Tên ngành: {Tiếng Việt}{English}
-\setTenGVHD{Học hàm. Họ và Tên GVHD}{Title. Full Name of Supervisor}% Người hướng dẫn: {Tiếng Việt}{English}
-\setTenBM{Tên bộ môn}                                                % Tên bộ môn
-\setDiaChiNgayThang{Tp. Hồ Chí Minh -- Năm 20XX}                     % Địa chỉ và ngày tháng bảo vệ
+
+% Tên học viên: {Tiếng Việt}{Tiếng Anh} (Không dùng \\)
+\setHoVaTen{Nguyễn~Văn~A}{Nguyen Van A}
+
+% Mã số học viên (MSSV) (Không dùng \\)
+\setMSSV{22C11001}
+
+% Khóa đào tạo (Ví dụ: 2022/2024) (Không dùng \\)
+\setKhoaDaoTao{2022/2024}
+
+% Tên đề tài luận văn: {Tiếng Việt}{Tiếng Anh}
+% [!] Chỉ phần Tiếng Việt của đề tài được phép chứa dấu xuống dòng (\\) để tự động căn chỉnh trang bìa
+\setTenKL{Nghiên~cứu~phát~triển~hệ~thống\\trí~tuệ~nhân~tạo}{Research and Development of Artificial Intelligence Systems}
+
+% Mã số ngành (Không dùng \\)
+\setMaNganh{8.48.01.01}
+
+% Tên ngành đào tạo: {Tiếng Việt}{Tiếng Anh} (Không dùng \\)
+\setTenNganh{Khoa học Máy tính}{Computer Science}
+
+% Cán bộ hướng dẫn khoa học: {Tiếng Việt}{Tiếng Anh} (Không dùng \\)
+% [!] Nếu có từ 2 cán bộ hướng dẫn trở lên, gọi dòng \addTenGVHD nhiều lần liên tiếp
+\addTenGVHD{PGS. TS. Nguyễn Văn B}{Assoc. Prof. Dr. Nguyen Van B}
+\addTenGVHD{TS. Trần Thị C}{Dr. Tran Thi C}
+
+% Tên bộ môn (Không dùng \\)
+\setTenBM{Công nghệ Tri thức}
+
+% Địa điểm và ngày tháng bảo vệ (Không dùng \\)
+\setDiaChiNgayThang{Tp. Hồ Chí Minh -- Năm 2026}
+
+% ========================================================================================= %
+% CÁC HÀM GETTER TỰ ĐỘNG SINH (Có thể dùng ở bất kỳ trang nào trong luận văn):
+% - Tên học viên: \tenSVTiengViet, \tenSVTiengAnh
+% - MSSV: \mssv
+% - Khóa đào tạo: \khoaDaoTao
+% - Đề tài luận văn: \tenKLTiengViet (chứa \\), \tenKLTiengAnh, \tenKhongXuongDong{\tenKLTiengViet} (bỏ \\)
+% - Mã ngành & Tên ngành: \maNganh, \tenNganhTiengViet, \tenNganhTiengAnh
+% - Danh sách CBHD: \listSupervisors (Tiếng Việt, dạng A, B và C), \listSupervisorsEnglish (Tiếng Anh)
+% - Bộ môn: \tenBM
+% - Ngày tháng: \diachiNgayThang
+% ========================================================================================= %
 
 \hypersetup{
     pdfauthor={\tenSVTiengViet},
@@ -35,7 +69,7 @@
 \begin{document}
 
 \pagenumbering{gobble}
-\input{Thesis/Title/title}
+\makethesiscover
 
 \pagenumbering{roman} % Đánh số i, ii, iii, ...
 
@@ -94,7 +128,7 @@
 \DeclareNameAlias{sortname}{family-given}
 \DeclareNameAlias{default}{family-given}
 
-\printbibliography[heading=subbibliography, title={Tiếng Anh}, notkeyword=Viet, resetnumbers=1] 
+\printbibliography[heading=subbibliography, title={Tiếng Anh}, notkeyword=Viet, resetnumbers=false] 
 % ===================================================================== %
 % CHÚ Ý: phải gán lại resetnumbers=số tài liệu tham khảo tiếng Việt + 1 %
 % ===================================================================== %

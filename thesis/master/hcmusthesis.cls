@@ -146,7 +146,7 @@
 \RequirePackage[
 	sorting=nty,
 	backend=bibtex,
-	defernumbers=true]{biblatex}
+	defernumbers=false]{biblatex}
 \RequirePackage[unicode]{hyperref}
 \addbibresource{Materials/References/references.bib}
 \pdfstringdefDisableCommands{\let\MakeUppercase\relax}
@@ -170,10 +170,56 @@
   \newcommand{\tenNganhTiengViet}{#1}%
   \newcommand{\tenNganhTiengAnh}{#2}%
 }
-\newcommand{\setTenGVHD}[2]{%
-  \newcommand{\tenGVHDTiengViet}{#1}%
-  \newcommand{\tenGVHDTiengAnh}{#2}%
+\newcommand{\dsGVHDTiengViet}{}
+\newcommand{\dsGVHDTiengAnh}{}
+
+\newcommand{\emptyval}{}
+
+\newcommand{\tenGVHDTiengVietTruoc}{}
+\newcommand{\tenGVHDTiengVietCuoi}{}
+\newcommand{\tenGVHDTiengViet}{}
+
+\newcommand{\tenGVHDTiengAnhTruoc}{}
+\newcommand{\tenGVHDTiengAnhCuoi}{}
+\newcommand{\tenGVHDTiengAnh}{}
+
+\newcommand{\addTenGVHD}[2]{%
+  \expandafter\gdef\expandafter\dsGVHDTiengViet\expandafter{\dsGVHDTiengViet \item #1}%
+  \expandafter\gdef\expandafter\dsGVHDTiengAnh\expandafter{\dsGVHDTiengAnh \item #2}%
+  \ifx\tenGVHDTiengVietCuoi\emptyval
+    \gdef\tenGVHDTiengVietCuoi{#1}%
+    \gdef\tenGVHDTiengViet{#1}%
+  \else
+    \ifx\tenGVHDTiengVietTruoc\emptyval
+      \toks0=\expandafter{\tenGVHDTiengVietCuoi}%
+      \xdef\tenGVHDTiengVietTruoc{\the\toks0}%
+    \else
+      \toks0=\expandafter{\tenGVHDTiengVietTruoc}%
+      \toks1=\expandafter{\tenGVHDTiengVietCuoi}%
+      \xdef\tenGVHDTiengVietTruoc{\the\toks0, \the\toks1}%
+    \fi
+    \gdef\tenGVHDTiengVietCuoi{#1}%
+    \gdef\tenGVHDTiengViet{\tenGVHDTiengVietTruoc\ và \tenGVHDTiengVietCuoi}%
+  \fi
+  \ifx\tenGVHDTiengAnhCuoi\emptyval
+    \gdef\tenGVHDTiengAnhCuoi{#2}%
+    \gdef\tenGVHDTiengAnh{#2}%
+  \else
+    \ifx\tenGVHDTiengAnhTruoc\emptyval
+      \toks0=\expandafter{\tenGVHDTiengAnhCuoi}%
+      \xdef\tenGVHDTiengAnhTruoc{\the\toks0}%
+    \else
+      \toks0=\expandafter{\tenGVHDTiengAnhTruoc}%
+      \toks1=\expandafter{\tenGVHDTiengAnhCuoi}%
+      \xdef\tenGVHDTiengAnhTruoc{\the\toks0, \the\toks1}%
+    \fi
+    \gdef\tenGVHDTiengAnhCuoi{#2}%
+    \gdef\tenGVHDTiengAnh{\tenGVHDTiengAnhTruoc\ and \tenGVHDTiengAnhCuoi}%
+  \fi
 }
+\newcommand{\listSupervisors}{\tenGVHDTiengViet}
+\newcommand{\listSupervisorsEnglish}{\tenGVHDTiengAnh}
+
 \newcommand{\setDiaChiNgayThang}[1]{%
   \newcommand{\diachiNgayThang}{#1}%
 }
@@ -185,4 +231,82 @@
 }
 \newcommand{\setTenBM}[1]{%
   \newcommand{\tenBM}{#1}%
+}
+\newcommand{\tenKhongXuongDong}[1]{{\renewcommand{\\}{ }#1}}
+
+
+% ========================================================================================= %
+% Lệnh dựng trang bìa và trang phụ bản đề tài                                               %
+% ========================================================================================= %
+\newcommand{\makethesiscover}{%
+  \begin{titlepage}
+  \begin{center}
+  \MakeUppercase{đại học quốc gia tp. hồ chí minh}\\
+  \MakeUppercase{\bfseries trường đại học khoa học tự nhiên}\\[2cm]
+  % \textbf{\MakeUppercase{khoa công nghệ thông tin}}\\[2cm]
+
+  { \large \bfseries \MakeUppercase{\tenSVTiengViet}\\[2cm] } 
+
+  %Tên đề tài Khóa luận tốt nghiệp/Đồ án tốt nghiệp
+  { \Large \bfseries \MakeUppercase{\tenKLTiengViet} \\[3cm]} 
+
+  %Chọn trong các dòng sau
+  {\large\bfseries\MakeUppercase{luận văn thạc sĩ}}\\
+  %\large ĐỒ ÁN TỐT NGHIỆP CỬ NHÂN\\
+  %\large THỰC TẬP TỐT NGHIỆP CỬ NHÂN\\
+  %Đưa vào dòng này nếu thuộc chương trình Chất lượng cao, hoặc lớp Cử nhân tài năng
+  %\large CHƯƠNG TRÌNH CHÍNH QUY\\
+  %\large CHƯƠNG TRÌNH CHẤT LƯỢNG CAO\\
+  %\large CHƯƠNG TRÌNH CỬ NHÂN TÀI NĂNG\\[2cm]
+
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[line width = 2pt] ($(current page.north west) + (3.25cm, -3.25cm)$) rectangle ($(current page.south east) + (-2.0cm, 3.0cm)$);
+  \end{tikzpicture}
+
+  \vfill
+  \diachiNgayThang
+
+  \end{center}
+
+  \pagebreak
+
+  \begin{center}
+  \MakeUppercase{đại học quốc gia tp. hồ chí minh}\\
+  \MakeUppercase{\bfseries trường đại học khoa học tự nhiên}\\[2cm]
+  % \textbf{\MakeUppercase{khoa công nghệ thông tin}}\\[2cm]
+
+  {\large \bfseries \MakeUppercase{\tenSVTiengViet}\\[2cm]} 
+
+  %Tên đề tài Khóa luận tốt nghiệp/Đồ án tốt nghiệp
+  { \Large \bfseries \MakeUppercase{\tenKLTiengViet} \\[2cm]}  
+
+  %Chọn trong các dòng sau
+  % \large LUẬN VĂN THẠC SĨ KHOA HỌC MÁY TÍNH\\
+  %\large ĐỒ ÁN TỐT NGHIỆP CỬ NHÂN\\
+  %Đưa vào dòng này nếu thuộc chương trình Chất lượng cao, hoặc lớp Cử nhân tài năng
+  %\large CHƯƠNG TRÌNH CHÍNH QUY\\[2cm]
+  %\large CHƯƠNG TRÌNH CHẤT LƯỢNG CAO\\[2cm]
+  %\large CHƯƠNG TRÌNH CỬ NHÂN TÀI NĂNG\\[2cm]
+
+  \end{center}
+
+  Ngành: \tenNganhTiengViet
+
+  Mã số ngành: \maNganh \\[2cm]
+
+  \textbf{\MakeUppercase{người hướng dẫn khoa học}}
+  \begin{enumerate}[leftmargin=2.5cm]
+      \dsGVHDTiengViet
+  \end{enumerate}
+
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[line width = 2pt] ($(current page.north west) + (3.25cm, -3.25cm)$) rectangle ($(current page.south east) + (-2.0cm, 3.0cm)$);
+  \end{tikzpicture}
+
+  \vfill
+
+  \begin{center}
+  \diachiNgayThang
+  \end{center}
+  \end{titlepage}
 }
