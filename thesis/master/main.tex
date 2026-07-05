@@ -1,12 +1,12 @@
 % Luận văn thạc sĩ KHMT
-% Dựa trên Template KLTN cho SV trường ĐHKHTN
+% Dựa trên Template Luận văn Thạc sĩ cho học viên trường ĐHKHTN
 % Tác giả: Thầy NQMinh  (nqminh@fit.hcmus.edu.vn)  - 2016
 %               BHThong (bhthong@fit.hcmus.edu.vn) - 2020
 %               THQuan  (thquan@fit.hcmus.edu.vn)  - 2026
 %
 %
 % Hướng dẫn: Điền thông tin vào khung CHÚ Ý bên dưới.
-% Build: pdflatex > bibtex > pdflatex > pdflatex
+% Build: pdflatex > biber > pdflatex > pdflatex
 %        Hoặc chạy: bash thesis-build.sh
 
 \documentclass{hcmusthesis}
@@ -23,8 +23,8 @@
 % Mã số học viên (MSSV) (Không dùng \\)
 \setMSSV{22C11001}
 
-% Khóa đào tạo (Ví dụ: 2022/2024) (Không dùng \\)
-\setKhoaDaoTao{2022/2024}
+% Khóa đào tạo (Ví dụ: K32/2022) (Không dùng \\)
+\setKhoaDaoTao{K32/2022}
 
 % Tên đề tài luận văn: {Tiếng Việt}{Tiếng Anh}
 % [!] Được phép chứa dấu xuống dòng (\\) để tự động căn chỉnh trang bìa
@@ -59,81 +59,54 @@
 % - Ngày tháng: \diachiNgayThang
 % ========================================================================================= %
 
-\hypersetup{
-    pdfauthor={\tenSVTiengViet},
-    pdftitle={\tenKLTiengViet},
-    % pdfkeywords={TODO: Từ khóa},
-    % pdfsubject={TODO: Tóm tắt}
-}
-
 \begin{document}
 
-\pagenumbering{gobble}
+% 1. Trang bìa (không đánh số trang)
 \makethesiscover
 
-\pagenumbering{roman} % Đánh số i, ii, iii, ...
+% Bắt đầu đánh số trang La Mã (i, ii, iii, ...) cho phần giới thiệu đầu
+\pagenumbering{roman}
 
-\input{Thesis/Appendix/reassurances}
-\addcontentsline{toc}{chapter}{Lời cam đoan}
+% 2. Lời cam đoan
+\inputreassurances
 
-\input{Thesis/Appendix/thanks}
-\addcontentsline{toc}{chapter}{Lời cảm ơn}
+% 3. Lời cảm ơn
+\inputthanks
 
-% Mục lục, danh sách hình, danh sách bảng
-\tableofcontents
-\addcontentsline{toc}{chapter}{Mục lục}
-\listoffigures
-\addcontentsline{toc}{chapter}{Danh mục các hình, biểu đồ}
-\listoftables
-\addcontentsline{toc}{chapter}{Danh mục các bảng số liệu}
-\printnoidxglossary[type=\acronymtype, title=Danh~mục các ký~hiệu và từ~viết~tắt]
+% 4. Các trang mục lục và danh mục
+\maketableofcontents
+\makelistoffigures
+\makelistoftables
+\makeglossaryofacronyms
 
-% Reset chapter number cho trang thông tin
-\renewcommand{\thesection}{\arabic{section}}
-\setcounter{section}{0}
-\titleformat*{\section}{\large\bfseries}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} 
-\input{Thesis/Appendix/thongtinluanvan}
+% 5. Trang thông tin luận văn (Tiếng Việt & Tiếng Anh)
+% [!] Tự động định dạng các đề mục của trang thông tin và khôi phục khi hoàn tất
+\inputthesisinfo
 
-\clearpage
+% ========================================================================================= %
+% CÁC CHƯƠNG NỘI DUNG
+% ========================================================================================= %
 
-% Đánh số chapter.section từ trang này
-\renewcommand{\thesection}{\thechapter.\arabic{section}}
-\titleformat*{\section}{\Large\bfseries}
-\pagenumbering{arabic} % Đánh số 1, 2, 3, ...
-% Đếm đến subsection
-\addtocontents{toc}{\protect\setcounter{tocdepth}{2}} 
+% Bắt đầu đánh số trang Ả Rập (1, 2, 3, ...) từ Chương 1
+\pagenumbering{arabic}
 
-% Các chương nội dung
 \input{Thesis/Chapter1-Introduction/chapter1}
-
 \input{Thesis/Chapter2-RelatedWorks/chapter2}
-
 \input{Thesis/Chapter3/chapter3}
-
 \input{Thesis/Chapter4/chapter4}
-
 \input{Thesis/Chapter5-Conclusion/chapter5}
 
-% Công trình của tác giả (nếu không có thì comment 02 dòng dưới)
-\input{Thesis/Appendix/publish}
-\addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}
+% ========================================================================================= %
+% CÔNG TRÌNH & TÀI LIỆU THAM KHẢO & PHỤ LỤC
+% ========================================================================================= %
 
-% In tài liệu tham khảo
-\printbibheading[title={Tài liệu tham khảo}]
-\addcontentsline{toc}{chapter}{Tài liệu tham khảo}
+% Danh mục công trình của tác giả (nếu không có thì comment dòng này)
+\inputpublications
 
-\printbibliography[heading=subbibliography, title={Tiếng Việt}, keyword=Viet, resetnumbers=true]
+% In tài liệu tham khảo (Tự động chia nhóm Tiếng Việt & Tiếng Anh với số thứ tự liên tục)
+\printthesisbibliography
 
-\DeclareNameAlias{sortname}{family-given}
-\DeclareNameAlias{default}{family-given}
-
-\printbibliography[heading=subbibliography, title={Tiếng Anh}, notkeyword=Viet, resetnumbers=false] 
-% ===================================================================== %
-% CHÚ Ý: phải gán lại resetnumbers=số tài liệu tham khảo tiếng Việt + 1 %
-% ===================================================================== %
-
-% Phần phụ lục
+% Phần phụ lục (nếu có)
 \appendix
 \input{Thesis/Appendix/appendix-a}
 
