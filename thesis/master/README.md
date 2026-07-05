@@ -13,6 +13,7 @@ This is a professional Master's Thesis Template for the Ho Chi Minh City Univers
 ## 📌 Table of Contents
 
 - [⚙️ Quick Setup in `main.tex`](#quick-setup-in-maintex)
+- [📄 Structure of `main.tex`](#structure-of-maintex)
 - [🗂️ Adding New Chapters](#adding-new-chapters)
 - [📝 Writing Thesis Information (`thongtinluanvan.tex`)](#writing-thesis-information-thongtinluanvantex)
 - [🛠️ Local Compilation Guide](#local-compilation-guide)
@@ -63,6 +64,67 @@ Open [main.tex](main.tex) and configure the student metadata block:
 > [!WARNING]
 > **Line Breaks (`\\`) Warning**
 > Line breaks (`\\`) are strictly forbidden in all metadata fields except for the thesis title (`\setTenKL`). Putting line breaks in fields like student names or supervisor names will break the metadata processing and result in compilation errors.
+
+---
+
+## 📄 Structure of `main.tex`
+
+The body of [main.tex](main.tex) is clean and focuses entirely on the logical structure of your thesis, hiding complex LaTeX resets and styles under the hood:
+
+```latex
+\begin{document}
+
+% 1. Trang bìa (không đánh số trang)
+\makethesiscover
+
+% Bắt đầu đánh số trang La Mã (i, ii, iii, ...) cho phần giới thiệu đầu
+\pagenumbering{roman}
+
+% 2. Lời cam đoan
+\inputreassurances
+
+% 3. Lời cảm ơn
+\inputthanks
+
+% 4. Các trang mục lục và danh mục
+\maketableofcontents
+\makelistoffigures
+\makelistoftables
+\makeglossaryofacronyms
+
+% 5. Trang thông tin luận văn (Tiếng Việt & Tiếng Anh)
+% [!] Tự động định dạng các đề mục của trang thông tin và khôi phục khi hoàn tất
+\inputthesisinfo
+
+% ========================================================================================= %
+% CÁC CHƯƠNG NỘI DUNG
+% ========================================================================================= %
+
+% Bắt đầu đánh số trang Ả Rập (1, 2, 3, ...) từ Chương 1
+\pagenumbering{arabic}
+
+\input{Thesis/Chapter1-Introduction/chapter1}
+\input{Thesis/Chapter2-RelatedWorks/chapter2}
+\input{Thesis/Chapter3/chapter3}
+\input{Thesis/Chapter4/chapter4}
+\input{Thesis/Chapter5-Conclusion/chapter5}
+
+% ========================================================================================= %
+% CÔNG TRÌNH & TÀI LIỆU THAM KHẢO & PHỤ LỤC
+% ========================================================================================= %
+
+% Danh mục công trình của tác giả (nếu không có thì comment dòng này)
+\inputpublications
+
+% In tài liệu tham khảo (Tự động chia nhóm Tiếng Việt & Tiếng Anh với số thứ tự liên tục)
+\printthesisbibliography
+
+% Phần phụ lục (nếu có)
+\appendix
+\input{Thesis/Appendix/appendix-a}
+
+\end{document}
+```
 
 ---
 
@@ -141,7 +203,7 @@ bash thesis-build.sh
 Or run compilation manually:
 ```bash
 pdflatex main
-bibtex main
+biber main
 pdflatex main
 pdflatex main
 ```
@@ -202,10 +264,9 @@ Add a new item inside the `enumerate` block using `\item[CT-xx]` and `\hypertarg
 > - Make sure to keep the labels consistent between `\item[...]` and the `\hypertarget{pub:...}{}` anchor so that any cross-references or hyperlinks point to the correct items.
 
 ### How to Remove the Publications Page
-If you do not have any publications yet, simply comment out or remove these lines in [main.tex](main.tex):
+If you do not have any publications yet, simply comment out or remove this line in [main.tex](main.tex):
 ```tex
-% \input{Thesis/Appendix/publish}
-% \addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}
+% \inputpublications
 ```
 
 ---

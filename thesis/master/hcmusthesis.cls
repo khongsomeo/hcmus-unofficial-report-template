@@ -145,11 +145,18 @@
 % Tài liệu tham khảo
 \RequirePackage[
 	sorting=nty,
-	backend=bibtex,
-	defernumbers=false]{biblatex}
+	backend=biber,
+	defernumbers=true]{biblatex}
 \RequirePackage[unicode]{hyperref}
 \addbibresource{Materials/References/references.bib}
 \pdfstringdefDisableCommands{\let\MakeUppercase\relax}
+
+\AtBeginDocument{
+  \hypersetup{
+      pdfauthor={\tenSVTiengViet},
+      pdftitle={\tenKhongXuongDong{\tenKLTiengViet}},
+  }
+}
 
 % ========================================================================================= %
 % Các định nghĩa thông tin (Metadata Setters & Getters)                                      %
@@ -240,6 +247,7 @@
 % ========================================================================================= %
 \newcommand{\makethesiscover}{%
   \begin{titlepage}
+  \thispagestyle{empty}
   \begin{center}
   \MakeUppercase{đại học quốc gia tp. hồ chí minh}\\
   \MakeUppercase{\bfseries trường đại học khoa học tự nhiên}\\[2cm]
@@ -247,17 +255,10 @@
 
   { \large \bfseries \MakeUppercase{\tenSVTiengViet}\\[2cm] } 
 
-  %Tên đề tài Khóa luận tốt nghiệp/Đồ án tốt nghiệp
+  % Đề tài luận văn thạc sĩ
   { \Large \bfseries \MakeUppercase{\tenKLTiengViet} \\[3cm]} 
 
-  %Chọn trong các dòng sau
-  {\large\bfseries\MakeUppercase{luận văn thạc sĩ}}\\
-  %\large ĐỒ ÁN TỐT NGHIỆP CỬ NHÂN\\
-  %\large THỰC TẬP TỐT NGHIỆP CỬ NHÂN\\
-  %Đưa vào dòng này nếu thuộc chương trình Chất lượng cao, hoặc lớp Cử nhân tài năng
-  %\large CHƯƠNG TRÌNH CHÍNH QUY\\
-  %\large CHƯƠNG TRÌNH CHẤT LƯỢNG CAO\\
-  %\large CHƯƠNG TRÌNH CỬ NHÂN TÀI NĂNG\\[2cm]
+  {\large\bfseries\MakeUppercase{luận văn thạc sĩ}}\\[2cm]
 
   \begin{tikzpicture}[remember picture, overlay]
     \draw[line width = 2pt] ($(current page.north west) + (3.25cm, -3.25cm)$) rectangle ($(current page.south east) + (-2.0cm, 3.0cm)$);
@@ -269,6 +270,7 @@
   \end{center}
 
   \pagebreak
+  \thispagestyle{empty}
 
   \begin{center}
   \MakeUppercase{đại học quốc gia tp. hồ chí minh}\\
@@ -277,16 +279,8 @@
 
   {\large \bfseries \MakeUppercase{\tenSVTiengViet}\\[2cm]} 
 
-  %Tên đề tài Khóa luận tốt nghiệp/Đồ án tốt nghiệp
+  % Đề tài luận văn thạc sĩ
   { \Large \bfseries \MakeUppercase{\tenKLTiengViet} \\[2cm]}  
-
-  %Chọn trong các dòng sau
-  % \large LUẬN VĂN THẠC SĨ KHOA HỌC MÁY TÍNH\\
-  %\large ĐỒ ÁN TỐT NGHIỆP CỬ NHÂN\\
-  %Đưa vào dòng này nếu thuộc chương trình Chất lượng cao, hoặc lớp Cử nhân tài năng
-  %\large CHƯƠNG TRÌNH CHÍNH QUY\\[2cm]
-  %\large CHƯƠNG TRÌNH CHẤT LƯỢNG CAO\\[2cm]
-  %\large CHƯƠNG TRÌNH CỬ NHÂN TÀI NĂNG\\[2cm]
 
   \end{center}
 
@@ -407,4 +401,63 @@
 \newenvironment{applicationsen}{%
   \section{\MakeUppercase{applications/ applicability/ perspective}}
 }{}
+
+% ========================================================================================= %
+% Helper Macros to Tidy Up main.tex                                                         %
+% ========================================================================================= %
+
+\newcommand{\inputreassurances}{%
+  \input{Thesis/Appendix/reassurances}%
+  \addcontentsline{toc}{chapter}{Lời cam đoan}%
+}
+
+\newcommand{\inputthanks}{%
+  \input{Thesis/Appendix/thanks}%
+  \addcontentsline{toc}{chapter}{Lời cảm ơn}%
+}
+
+\newcommand{\maketableofcontents}{%
+  \tableofcontents%
+  \addcontentsline{toc}{chapter}{Mục lục}%
+}
+
+\newcommand{\makelistoffigures}{%
+  \listoffigures%
+  \addcontentsline{toc}{chapter}{\listfigurename}%
+}
+
+\newcommand{\makelistoftables}{%
+  \listoftables%
+  \addcontentsline{toc}{chapter}{\listtablename}%
+}
+
+\newcommand{\makeglossaryofacronyms}{%
+  \printnoidxglossary[type=\acronymtype, title=Danh~mục các ký~hiệu và từ~viết~tắt]%
+}
+
+\newcommand{\inputthesisinfo}{%
+  \renewcommand{\thesection}{\arabic{section}}%
+  \setcounter{section}{0}%
+  \titleformat*{\section}{\large\bfseries}%
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}%
+  \input{Thesis/Appendix/thongtinluanvan}%
+  \clearpage%
+  \renewcommand{\thesection}{\thechapter.\arabic{section}}%
+  \titleformat*{\section}{\Large\bfseries}%
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}%
+}
+
+\newcommand{\inputpublications}{%
+  \input{Thesis/Appendix/publish}%
+  \addcontentsline{toc}{chapter}{Danh mục công trình của tác giả}%
+}
+
+\newcommand{\printthesisbibliography}{%
+  \printbibheading[title={Tài liệu tham khảo}]%
+  \addcontentsline{toc}{chapter}{Tài liệu tham khảo}%
+  \printbibliography[heading=subbibliography, title={Tiếng Việt}, keyword=Viet, resetnumbers=true]%
+  \DeclareNameAlias{sortname}{family-given}%
+  \DeclareNameAlias{default}{family-given}%
+  \printbibliography[heading=subbibliography, title={Tiếng Anh}, notkeyword=Viet, resetnumbers=false]%
+}
 
