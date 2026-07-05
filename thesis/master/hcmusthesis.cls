@@ -227,9 +227,11 @@
 \newcommand{\listSupervisors}{\tenGVHDTiengViet}
 \newcommand{\listSupervisorsEnglish}{\tenGVHDTiengAnh}
 
-\newcommand{\setDiaChiNgayThang}[1]{%
-  \newcommand{\diachiNgayThang}{#1}%
+\newcommand{\diachi}{Tp. Hồ Chí Minh}
+\newcommand{\setDiaChi}[1]{%
+  \renewcommand{\diachi}{#1}%
 }
+\newcommand{\diachiNgayThang}{\diachi\ --\ Năm\ \the\year}
 \newcommand{\setMSSV}[1]{%
   \newcommand{\mssv}{#1}%
 }
