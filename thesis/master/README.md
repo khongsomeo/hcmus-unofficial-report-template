@@ -10,8 +10,17 @@ This is a professional Master's Thesis Template for the Ho Chi Minh City Univers
 
 ---
 
+## 🎨 Template Previews
+
+| Trang bìa | Trang thông tin | Lời cảm ơn | Nội dung chương | Tài liệu tham khảo |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="Materials/Figures/cover_preview.png" alt="Trang bìa" width="180"/> | <img src="Materials/Figures/thesis_info_vi_preview.png" alt="Trang thông tin" width="180"/> | <img src="Materials/Figures/thanks_preview.png" alt="Lời cảm ơn" width="180"/> | <img src="Materials/Figures/chapter3_preview.png" alt="Nội dung chương" width="180"/> | <img src="Materials/Figures/references_preview.png" alt="Tài liệu tham khảo" width="180"/> |
+
+---
+
 ## 📌 Table of Contents
 
+- [🎨 Template Previews](#template-previews)
 - [⚙️ Quick Setup in `main.tex`](#quick-setup-in-maintex)
 - [📄 Structure of `main.tex`](#structure-of-maintex)
 - [🗂️ Adding New Chapters](#adding-new-chapters)
@@ -34,10 +43,10 @@ Open [main.tex](main.tex) and configure the student metadata block:
 \setHoVaTen{Nguyễn~Văn~A}{Nguyen Van A}
 
 % Mã số học viên (MSSV) (Không dùng \\)
-\setMSSV{24C99001}
+\setMSSV{22C11001}
 
-% Khóa đào tạo (Ví dụ: K24/2024) (Không dùng \\)
-\setKhoaDaoTao{K24/2024}
+% Khóa đào tạo (Ví dụ: K32/2022) (Không dùng \\)
+\setKhoaDaoTao{K32/2022}
 
 % Tên đề tài luận văn: {Tiếng Việt}{Tiếng Anh}
 % [!] Được phép chứa dấu xuống dòng (\\) để tự động căn chỉnh trang bìa
@@ -57,8 +66,8 @@ Open [main.tex](main.tex) and configure the student metadata block:
 % Tên bộ môn (Không dùng \\)
 \setTenBM{Công nghệ Tri thức}
 
-% Địa điểm và ngày tháng bảo vệ (Không dùng \\)
-\setDiaChiNgayThang{Tp. Hồ Chí Minh -- Năm 2026}
+% Địa điểm bảo vệ (Không dùng \\, mặc định là Tp. Hồ Chí Minh nếu comment)
+% \setDiaChi{Tp. Hồ Chí Minh}
 ```
 
 > [!WARNING]
