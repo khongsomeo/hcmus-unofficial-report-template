@@ -1,20 +1,30 @@
 # (Unofficial) report template for HCMUS
 
-This repository stores the source code for these templates:
+This repository stores the source code for LaTeX templates designed for students and researchers of the Ho Chi Minh City University of Science (HCMUS):
 
 - **`report`**: [Report Template on Overleaf](https://www.overleaf.com/latex/templates/hcmus-report-template/zyrhmsxynwqs)
-- **`thesis`**: Unofficial Master/Undergraduate Thesis Template (available in `thesis/master`, detailed documentation in [thesis/master/README.md](thesis/master/README.md))
+- **`thesis`**: Unofficial Master Thesis Template (available in `thesis/master`, detailed documentation in the [Project Wiki](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki))
 - **`book`**: Book/lecture notes template (available in `book`).
 
 ---
 
-## 🛠️ Local Compilation Guide
+## 📖 Wiki Documentation
+
+All detailed user guides, configuration steps, layout previews, and compilation instructions are available on the project Wiki:
+
+👉 **[Go to Project Wiki Documentation](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki)**
+
+---
+
+## 🛠️ General Prerequisites
+
+To compile any template locally on your machine, you must install the following:
 
 1. **Install TeXStudio**: `sudo apt-get install texstudio`
 2. **Install TeXLive**: `sudo apt-get install texlive-full` (highly recommended, approx. 5GB)
 
 > [!TIP]
-> The `texlive` package does **not** include all LaTeX packages. In order to render some components (e.g. `algorithm`), you **must** install the `texlive-full` package. Therefore we would recommend using Overleaf for the best experience.
+> The default `texlive` package does **not** include all LaTeX packages. In order to render some components (e.g. `algorithm`, `biblatex`), you **must** install the `texlive-full` package. We recommend using Overleaf if you prefer to avoid a large local installation.
 
 ---
 
