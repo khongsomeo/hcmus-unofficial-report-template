@@ -4,7 +4,6 @@ This repository stores the source code for LaTeX templates designed for students
 
 - **`report`**: [Report Template on Overleaf](https://www.overleaf.com/latex/templates/hcmus-report-template/zyrhmsxynwqs)
 - **`thesis`**: Unofficial Master Thesis Template (available in `thesis/master`, detailed documentation in the [Project Wiki](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki))
-- **`book`**: Book/lecture notes template (available in `book`).
 
 ---
 
