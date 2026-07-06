@@ -1,0 +1,3 @@
+[submodule "docs"]
+	path = docs
+	url = https://github.com/khongsomeo/hcmus-unofficial-report-template.wiki.git
