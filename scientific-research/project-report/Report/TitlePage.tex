@@ -1,0 +1,131 @@
+\hypersetup{pageanchor=false}
+
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture, overlay]
+    % Khung đôi bao quanh trang bìa
+    \ifnum\BiaMoi=1
+      % KHUNG MỚI: Hai đường viền mảnh màu đen rất sát nhau
+      % Khung ngoài (mỏng)
+      \draw[line width=0.5pt, black] 
+        ($(current page.north west) + (3.0cm,-2.0cm)$) 
+        rectangle 
+        ($(current page.south east) + (-2.0cm,2.0cm)$);
+      % Khung trong (mỏng, sát khung ngoài)
+      \draw[line width=0.5pt, black] 
+        ($(current page.north west) + (3.05cm,-2.05cm)$) 
+        rectangle 
+        ($(current page.south east) + (-2.05cm,2.05cm)$);
+    \else
+      % KHUNG CŨ: Đường viền xanh (ngoài mỏng, trong dày cách nhau nhiều hơn)
+      % Khung ngoài (mỏng)
+      \draw[line width=0.5pt, blue!70!black] 
+        ($(current page.north west) + (3.0cm,-2.0cm)$) 
+        rectangle 
+        ($(current page.south east) + (-2.0cm,2.0cm)$);
+      % Khung trong (dày)
+      \draw[line width=1.5pt, blue!70!black] 
+        ($(current page.north west) + (3.12cm,-2.12cm)$) 
+        rectangle 
+        ($(current page.south east) + (-2.12cm,2.12cm)$);
+    \fi
+  \end{tikzpicture}
+  
+  % Đẩy hộp biểu mẫu lên trên khu vực lề đầu trang (ngoài khung)
+  \vspace*{-2.0cm}
+  \hfill
+  \ifnum\DraftMode=1
+    \begin{tabular}{|c|}
+      \hline
+      Mẫu T-BCTH-22v1 \\
+      \hline
+    \end{tabular}
+  \else
+    \phantom{\begin{tabular}{|c|}
+      \hline
+      Mẫu T-BCTH-22v1 \\
+      \hline
+    \end{tabular}}
+  \fi
+  
+  \ifnum\BiaMoi=1
+    \vspace{0.3cm}
+  \else
+    \vspace{1.5cm}
+  \fi
+  
+  \begin{center}
+    {\large ĐẠI HỌC QUỐC GIA TP. HỒ CHÍ MINH} \\
+    {\large\bf TRƯỜNG ĐẠI HỌC KHOA HỌC TỰ NHIÊN} \\
+    \ifnum\BiaMoi=1
+      \vspace{2.2cm}
+    \else
+      \vspace{0.8cm}
+      \includegraphics[width=2.5cm]{img/hcmus-logo.png} \\
+      \vspace{1.5cm}
+    \fi
+    {\Huge\bf BÁO CÁO TỔNG HỢP} \\
+    \ifnum\BiaMoi=1
+      \vspace{0.25cm}
+    \else
+      \vspace{0.6cm}
+    \fi
+    {\Large\bf KẾT QUẢ THỰC HIỆN} \\
+    {\Large\bf ĐỀ TÀI NGHIÊN CỨU KHOA HỌC VÀ CÔNG NGHỆ} \\
+    {\Large\bf CẤP TRƯỜNG} \\
+  \end{center}
+  
+  \ifnum\BiaMoi=1
+    % NỘI DUNG MỚI: Left-aligned trong minipage có padding, chữ thường
+    \vspace{0.8cm}
+    \begin{center}
+      \begin{minipage}{\dimexpr\textwidth-2.0cm\relax}
+        {\fontsize{14}{16}\selectfont
+        \noindent \textbf{Tên đề tài:} \Tendetai \par\vspace{0.5cm}
+        \noindent \textbf{Tên tiếng Anh (nếu có):} \TendetaiTiengAnh \par\vspace{1.0cm}
+        
+        \noindent \textbf{Chủ nhiệm đề tài:} \ChunhiemDeTai \par\vspace{0.4cm}
+        \noindent \textbf{Mã số đề tài:} \MasoDeTai
+        }
+      \end{minipage}
+    \end{center}
+  \else
+    % NỘI DUNG CŨ: Thụt lề, in hoa tiêu đề, bảng căn lề phải
+    \vspace{1.5cm}
+    {\fontsize{14}{16}\selectfont
+    \noindent \hspace*{0.5cm} \textbf{Tên đề tài:} \\
+    \noindent \hspace*{1.77cm} \parbox[t]{\dimexpr\textwidth-2.27cm}{\bfseries\raggedright\MakeUppercase \Tendetai} \\[0.4cm]
+    \noindent \hspace*{0.5cm} \textbf{Tên tiếng Anh:} \\
+    \noindent \hspace*{1.77cm} \parbox[t]{\dimexpr\textwidth-2.27cm}{\bfseries\raggedright \TendetaiTiengAnh}
+    
+    \vspace{1.5cm}
+    
+    \noindent\hspace*{3.5cm}%
+    \begin{tabular}{l}
+      \textbf{Chủ nhiệm đề tài: \ChunhiemDeTai} \\
+      \textbf{Mã số đề tài: \MasoDeTai}
+    \end{tabular}
+    }
+  \fi
+  
+  \ifnum\BiaMoi=1
+    \vspace{\stretch{1.4}}
+    \begin{center}
+      \begin{minipage}{\dimexpr\textwidth-2.0cm\relax}
+        \centering
+        {\large\bf \DiaPhuongBaoCao, \ThangNamBaoCao}
+      \end{minipage}
+    \end{center}
+    \vspace{\stretch{1.0}}
+  \else
+    \vfill
+    \begin{center}
+      {\large\bf \DiaPhuongBaoCao, \ThangNamBaoCao}
+    \end{center}
+  \fi
+\end{titlepage}
+
+\hypersetup{pageanchor=true}
+
+\newpage
+\setcounter{page}{1}
