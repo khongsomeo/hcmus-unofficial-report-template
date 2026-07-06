@@ -1,17 +1,28 @@
-# (Unofficial) report template for HCMUS
+# 🎓 Unofficial LaTeX Templates for HCMUS
 
-This repository stores the source code for LaTeX templates designed for students and researchers of the Ho Chi Minh City University of Science (HCMUS):
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![Wiki](https://img.shields.io/badge/Documentation-Wiki-brightgreen.svg)](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki)
 
-- **`report`**: [Report Template on Overleaf](https://www.overleaf.com/latex/templates/hcmus-report-template/zyrhmsxynwqs)
-- **`thesis`**: Unofficial Master Thesis Template (available in `thesis/master`, detailed documentation in the [Project Wiki](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki))
+This repository provides LaTeX templates designed for students and researchers at the Ho Chi Minh City University of Science (HCMUS). All detailed user guides, configuration steps, layout previews, and compilation instructions are unified in the project Wiki.
+
+👉 **[Go to Project Wiki Documentation](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki)**
+
+> [!CAUTION]
+> **These templates are unofficial, entirely community-run, and not endorsed by HCMUS.**
+> 
+> It is provided 100% free of charge via this official repository and the listed Overleaf links. If you paid money for this, you have been scammed. 
+> We make no guarantees that your department's formatting committee won't reject this layout (along with your graduation timeline). Please consult your academic office or advisor before use to save your own sanity. We also take zero responsibility for sketchy copies downloaded from random third-party forums.
+> 
+> If it compiles and breaks, you get to keep both pieces. To report bugs or offer therapy to the maintainers, please open an issue or write to `thquan (at) fit.hcmus.edu.vn`.
 
 ---
 
-## 📖 Wiki Documentation
+## 🗂️ Available Templates
 
-All detailed user guides, configuration steps, layout previews, and compilation instructions are available on the project Wiki:
-
-👉 **[Go to Project Wiki Documentation](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki)**
+| Template | Folder Position | Launch on Overleaf | Documentation |
+| :--- | :--- | :---: | :--- |
+| **Course Report** | [report/](report) | [![Overleaf](https://img.shields.io/badge/Overleaf-Template-35713B?style=flat&logo=Overleaf&logoColor=white)](https://www.overleaf.com/latex/templates/hcmus-report-template/zyrhmsxynwqs) | [Report Guide](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki/Report) |
+| **Master's Thesis** | [thesis/master/](thesis/master) | — | [Thesis Guide](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki/Master-Thesis) |
 
 ---
 
