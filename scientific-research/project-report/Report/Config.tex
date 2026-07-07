@@ -1,0 +1,108 @@
+% =========================================================================
+% HƯỚNG DẪN ĐIỀN THÔNG TIN BÁO CÁO NGHIỆM THU ĐỀ TÀI:
+% Thay đổi các giá trị trong dấu ngoặc nhọn {...} bên dưới bằng thông tin thật.
+% =========================================================================
+
+% Thiết lập trang bìa: điền 1 để chọn mẫu bìa mới (không logo, viền đôi đen sát nhau), 0 để chọn mẫu bìa cũ (có logo, viền xanh)
+\BiaMoi{1}
+
+
+
+% 1. Thông tin chung về đề tài
+\Tendetai{Tên đề tài nghiên cứu khoa học bằng tiếng Việt}
+\TendetaiTiengAnh{English Title of the Scientific Research Project}
+\MasoDeTai{ABCD-202X-XX}
+\ChunhiemDeTai{Học vị.}{Họ và tên chủ nhiệm đề tài}
+\newcommand{\KinhphiDuyet}{100} % Số triệu đồng
+\newcommand{\KinhphiBangchu}{Một trăm}
+\newcommand{\ThoigianHopdong}{12 tháng, từ MM/YYYY đến MM/YYYY}
+\newcommand{\ThoigianGiahan}{0 tháng}
+\newcommand{\ThoigianThucte}{12 tháng, từ MM/YYYY đến MM/YYYY}
+% \ThangNamBaoCao{tháng MM năm YYYY} % Bỏ chọn hoặc để trống để tự động lấy tháng/năm hiện tại
+\DiaPhuongBaoCao{Tp. Hồ Chí Minh}
+
+% Chọn loại đề tài (Điền 1 để chọn [x], 0 để bỏ chọn [ ])
+\newcommand{\LoaiCoBan}{1}
+\newcommand{\LoaiUngDung}{0}
+
+% Chọn ngành/lĩnh vực (Điền 1 để chọn [x], 0 để bỏ chọn [ ])
+\newcommand{\NganhToan}{0}
+\newcommand{\NganhVatly}{0}
+\newcommand{\NganhHoahoc}{0}
+\newcommand{\NganhSinhhoc}{0}
+\newcommand{\NganhSuckhoe}{0}
+\newcommand{\NganhTraidat}{0}
+\newcommand{\NganhVatlieu}{0}
+\newcommand{\NganhNangluong}{0}
+\newcommand{\NganhCokhi}{0}
+\newcommand{\NganhDientu}{0}
+\newcommand{\NganhCNTT}{1}
+\newcommand{\NganhKhac}{0}
+\newcommand{\NganhKhacText}{....}
+
+% =========================================================================
+% 2. Danh sách chủ nhiệm, thành viên tham gia thực hiện đề tài (Mục 6)
+% Cú pháp: \AddMember{Mã số}{Họ và tên}{Đơn vị công tác}{Vai trò trong đề tài}
+% Ví dụ: \AddMember{1234}{Nguyễn Văn A}{Khoa CNTT, Trường ĐH KHTN}{Thành viên}
+% =========================================================================
+\AddMember{1000}{\ChunhiemDeTai}{Trường ĐH KHTN, ĐHQG-HCM}{Chủ nhiệm}
+\AddMember{1001}{Học vị. Họ tên thành viên 1}{Trường ĐH KHTN, ĐHQG-HCM}{Thành viên chính}
+\AddMember{1002}{Học vị. Họ tên thành viên 2}{Trường ĐH KHTN, ĐHQG-HCM}{Thành viên}
+
+% =========================================================================
+% 3. Danh sách công bố khoa học (Phần III, Mục III.1)
+% Cú pháp chung cho các loại công bố:
+%   - \AddCongBoISI (Tạp chí ISI/quốc tế uy tín)
+%   - \AddCongBoIntl (Tạp chí quốc tế khác)
+%   - \AddCongBoNat (Tạp chí quốc gia uy tín)
+%   - \AddCongBoConfIntl (Kỷ yếu hội nghị quốc tế)
+%   - \AddCongBoConfNat (Kỷ yếu hội nghị quốc gia)
+%   - \AddCongBoBook (Sách chuyên khảo)
+%   - \AddCongBoOther (Kết quả công bố khác)
+%
+% Cú pháp: \AddCongBo...{Tác giả}{Năm}{Tên công trình}{Thông tin chi tiết}{Xếp hạng}{DOI}{ISSN/ISBN}{Tình trạng}
+% Ví dụ:
+% \AddCongBoISI{Nguyễn Văn A}{2026}{Tên bài báo}{Tên tạp chí, số, trang}{Q1, IF=5.2}{10.1002/abc}{1234-5678}{Đã công bố}
+% =========================================================================
+\AddCongBoConfIntl{Họ và tên tác giả 1, Họ và tên tác giả 2}{202X}{Tên công trình công bố bằng tiếng Anh}{Chi tiết về hội nghị khoa học quốc tế, nhà xuất bản, địa điểm tổ chức}{CORE A/B/C hoặc xếp hạng tương đương}{10.1000/xyz123}{XXXX-XXXX}{Đã chấp nhận đăng / Đã xuất bản}
+
+% =========================================================================
+% 4. Kết quả đăng ký sở hữu trí tuệ (Phần III, Mục III.2)
+% Cú pháp cho các loại sở hữu trí tuệ:
+%   - \AddSHTTForeign (Bằng sáng chế nước ngoài)
+%   - \AddSHTTDomestic (Bằng sáng chế trong nước)
+%   - \AddSHTTUtility (Giải pháp hữu ích)
+%   - \AddSHTTSoftware (Bản quyền phần mềm)
+%   - \AddSHTTOther (Các kết quả khác)
+%
+% Cú pháp: \AddSHTT...{Tác giả}{Tên công trình}{Nơi nhận hồ sơ/Cấp chứng nhận, số và ngày quyết định}{Tình trạng}
+% Ví dụ:
+% \AddSHTTSoftware{Nguyễn Văn A}{Phần mềm quản lý}{Cục Bản quyền Tác giả, QĐ số 456 ngày 01/01/2026}{Đã cấp}
+% =========================================================================
+% \AddSHTTSoftware{Tác giả 1, Tác giả 2}{Tên phần mềm/sáng chế}{Cục Bản quyền tác giả, QĐ số...}{Đã cấp}
+
+% =========================================================================
+% 5. Kết quả đào tạo (Phần III, Mục III.3)
+% Cú pháp cho các loại đào tạo:
+%   - \AddDaoTaoPHD (Nghiên cứu sinh)
+%   - \AddDaoTaoMaster (Học viên cao học)
+%   - \AddDaoTaoUndergrad (Sinh viên đại học)
+%
+% Cú pháp: \AddDaoTao...{Họ và tên}{Thời gian tham gia (từ mm/yyyy đến mm/yyyy)}{Tên đề tài luận án/luận văn/khóa luận}{Ghi chú}
+% Ví dụ:
+% \AddDaoTaoUndergrad{Nguyễn Văn B}{từ 11/2025 đến 06/2026}{Nghiên cứu về Hate Speech}{Sinh viên làm khóa luận tốt nghiệp}
+% =========================================================================
+% \AddDaoTaoMaster{Họ và tên học viên}{từ MM/YYYY đến MM/YYYY}{Tên đề tài luận văn thạc sĩ}{Ghi chú đào tạo}
+
+% =========================================================================
+% 6. Tình hình sử dụng kinh phí (Phần IV)
+% Định dạng: \SetKinhPhi...{Kinh phí được duyệt}{Kinh phí thực hiện}
+% =========================================================================
+\SetKinhPhiNhanCong{80000000}{80000000}
+\SetKinhPhiVatLieu{10000000}{10000000}
+\SetKinhPhiThietBi{5000000}{5000000}
+\SetKinhPhiDiLai{3000000}{3000000}
+\SetKinhPhiThueNgoai{0}{0}
+\SetKinhPhiTrucTiepKhac{0}{0}
+\SetKinhPhiQuanLy{2000000}{2000000}{Quản lý chung}
+\SetKinhPhiHoiDong{0}{0}{}
