@@ -77,6 +77,30 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[R]{\thepage}
 
+% --- Landscape Page Style ---
+% pdflscape rotates body content 90° CCW inside a portrait PDF page.
+% In landscape reading view:
+%   - Left margin = 3.0cm (portrait Bottom)
+%   - Right margin = 2.0cm (portrait Top)
+%   - Top margin = 2.0cm (portrait Left)
+%   - Bottom margin = 2.0cm (portrait Right)
+% Page number should be at bottom-right in landscape view:
+%   - 2.0cm from landscape Bottom edge (portrait Right)
+%   - 1.27cm from landscape Right edge (portrait Top)
+%   - Oriented horizontally (so rotated 90° CCW in portrait)
+\fancypagestyle{lscape}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \setlength{\headheight}{15pt}%
+  \fancyhead[R]{%
+    \begin{tikzpicture}[remember picture, overlay]
+      \node[anchor=north east, rotate=90] at ($(current page.north east) + (-1.27cm, -2.0cm)$) {\thepage};
+    \end{tikzpicture}%
+  }%
+}
+
+
 % --- Section Numbering in Vietnamese Standards ---
 \renewcommand{\thesection}{PHẦN \Roman{section}}
 \renewcommand{\thesubsection}{\arabic{subsection}}
@@ -459,7 +483,7 @@
         \begin{minipage}{\dimexpr\textwidth-2.0cm\relax}
           {\fontsize{14}{16}\selectfont
           \noindent \textbf{Tên đề tài:} \@Tendetai \par\vspace{0.5cm}
-          \noindent \textbf{Tên tiếng Anh (nếu có):} \@TendetaiTiengAnh \par\vspace{1.0cm}
+          \noindent \textbf{Tên tiếng Anh:} \@TendetaiTiengAnh \par\vspace{1.0cm}
           
           \noindent \textbf{Chủ nhiệm đề tài:} \@ChunhiemDeTai \par\vspace{0.4cm}
           \noindent \textbf{Mã số đề tài:} \@MasoDeTai
@@ -576,7 +600,7 @@
   \section{THÔNG TIN CHUNG}
 
   \noindent\textbf{1. Tên đề tài:} \Tendetai \\
-  \noindent\textbf{Tên tiếng Anh (nếu có):} \TendetaiTiengAnh
+  \noindent\textbf{Tên tiếng Anh:} \TendetaiTiengAnh
 
   \vspace{2pt}
   \noindent\textbf{2. Mã số:} \MasoDeTai
@@ -637,7 +661,7 @@
   \vspace{2pt}
   \noindent\textbf{7. Thời gian thực hiện:} \\
   \noindent\hspace*{0.5cm}\textbf{Theo hợp đồng:} \ThoigianHopdong \\
-  \noindent\hspace*{0.5cm}\textbf{Gia hạn (nếu có):} \ThoigianGiahan \\
+  \noindent\hspace*{0.5cm}\textbf{Gia hạn:} \ThoigianGiahan \\
   \noindent\hspace*{0.5cm}\textbf{Thực hiện thực tế:} \ThoigianThucte
 
   \vspace{2pt}
@@ -649,7 +673,10 @@
 }
 
 \newcommand{\makepublicationsection}{%
+  \clearpage
+  \newgeometry{top=2.0cm, bottom=3.0cm, left=2.0cm, right=2.0cm}
   \begin{landscape}
+  \pagestyle{lscape}
   \section{KẾT QUẢ CÔNG BỐ, SỞ HỮU TRÍ TUỆ VÀ ĐÀO TẠO}
 
   \subsection{Kết quả công bố}
@@ -659,22 +686,22 @@
   \renewcommand{\arraystretch}{1.0}
   \small
   \singlespacing
-  \begin{longtable}{|>{\centering\arraybackslash}m{\dimexpr 1.2cm - 2\tabcolsep - \arrayrulewidth}|
-                     m{\dimexpr 3.2cm - 2\tabcolsep - \arrayrulewidth}|
-                     >{\centering\arraybackslash}m{\dimexpr 1.6cm - 2\tabcolsep - \arrayrulewidth}|
-                     m{\dimexpr 4.5cm - 2\tabcolsep - \arrayrulewidth}|
-                     m{\dimexpr 5.0cm - 2\tabcolsep - \arrayrulewidth}|
-                     >{\centering\arraybackslash}m{\dimexpr 2.2cm - 2\tabcolsep - \arrayrulewidth}|
+  \begin{longtable}{|>{\centering\arraybackslash}m{\dimexpr 1.0cm - 2\tabcolsep - \arrayrulewidth}|
+                     m{\dimexpr 3.0cm - 2\tabcolsep - \arrayrulewidth}|
+                     >{\centering\arraybackslash}m{\dimexpr 1.5cm - 2\tabcolsep - \arrayrulewidth}|
+                     m{\dimexpr 4.8cm - 2\tabcolsep - \arrayrulewidth}|
+                     m{\dimexpr 4.9cm - 2\tabcolsep - \arrayrulewidth}|
+                     >{\centering\arraybackslash}m{\dimexpr 2.0cm - 2\tabcolsep - \arrayrulewidth}|
                      m{\dimexpr 2.5cm - 2\tabcolsep - \arrayrulewidth}|
                      m{\dimexpr 2.5cm - 2\tabcolsep - \arrayrulewidth}|
                      m{\dimexpr 2.5cm - 2\tabcolsep - \arrayrulewidth}|}
     \hline
-    \textbf{\parbox{\dimexpr 1.2cm - 2\tabcolsep}{\centering STT}} & 
-    \textbf{\parbox{\dimexpr 3.2cm - 2\tabcolsep}{\centering Tên các tác giả}} & 
-    \textbf{\parbox{\dimexpr 1.6cm - 2\tabcolsep}{\centering Năm\\ công\\ bố}} & 
-    \textbf{\parbox{\dimexpr 4.5cm - 2\tabcolsep}{\centering Tên công trình}} & 
-    \textbf{\parbox{\dimexpr 5.0cm - 2\tabcolsep}{\centering Thông tin chi tiết\\ về công trình}} & 
-    \textbf{\parbox{\dimexpr 2.2cm - 2\tabcolsep}{\centering Xếp hạng\\ tạp chí/\\ hội nghị}} & 
+    \textbf{\parbox{\dimexpr 1.0cm - 2\tabcolsep}{\centering STT}} & 
+    \textbf{\parbox{\dimexpr 3.0cm - 2\tabcolsep}{\centering Tên các tác giả}} & 
+    \textbf{\parbox{\dimexpr 1.5cm - 2\tabcolsep}{\centering Năm\\ công\\ bố}} & 
+    \textbf{\parbox{\dimexpr 4.8cm - 2\tabcolsep}{\centering Tên công trình}} & 
+    \textbf{\parbox{\dimexpr 4.9cm - 2\tabcolsep}{\centering Thông tin chi tiết\\ về công trình}} & 
+    \textbf{\parbox{\dimexpr 2.0cm - 2\tabcolsep}{\centering Xếp hạng\\ tạp chí/\\ hội nghị}} & 
     \textbf{\parbox{\dimexpr 2.5cm - 2\tabcolsep}{\centering DOI}} & 
     \textbf{\parbox{\dimexpr 2.5cm - 2\tabcolsep}{\centering ISSN/ISBN}} & 
     \textbf{\parbox{\dimexpr 2.5cm - 2\tabcolsep}{\centering Tình trạng}} \\ \hline
@@ -711,6 +738,8 @@
   \fi
   \endgroup
   \end{landscape}
+  \restoregeometry
+  \pagestyle{fancy}
 
   \newpage
 
