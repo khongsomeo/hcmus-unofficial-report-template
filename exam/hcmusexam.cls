@@ -1,5 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{hcmusexam}[2026/07/14 Unofficial Exam Class for HCMUS]
+\PassOptionsToPackage{dvipsnames}{xcolor}
 
 % --- Option Passing ---
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{exam}}
@@ -27,6 +28,7 @@
 \RequirePackage{algpseudocode}
 \RequirePackage{xspace}
 \RequirePackage{refcount}
+\RequirePackage{tikz}
 
 % --- Layout & Spacing ---
 \linespread{1.2}
@@ -100,18 +102,25 @@
 \newcommand{\addnamebox}{%
   \large
   \centerline{\LARGE\textbf{\@examname\ifx\@examtime\empty\else\ (\@examtime)\fi}}
-  \vspace{.25cm}
+  \vspace{.3cm}
   \noindent \textbf{Full name of Student:} \fillin[][8cm] \textbf{Student ID:} \fillin[][2.95cm]\par
   \ifnum\@canvietnamese=1
-    \vspace{.15cm}
+    \vspace{.3cm}
     \centerline{\textit{\underline{Note:} Students can answer the questions in English or Vietnamese.}}\par
+    \vspace{.3cm}
+  \else
+    \vspace{.3cm}
   \fi
-  \vspace{-.15cm}
+  \vspace{-\topsep}
+  \vspace{-\partopsep}
 }
 
 % --- Equalize spacing between choices in oneparchoices ---
 \renewenvironment{oneparchoices}%
   {%
+    \if@filesw
+      \immediate\write\@auxout{\string\global\string\@namedef{mcq@isquestion@\the\value{question}}{1}}%
+    \fi
     \setcounter{choice}{0}%
     \def\choice{%
       \if@correctchoice \endgroup \fi
@@ -130,6 +139,9 @@
         \begingroup \@correctchoicetrue 
         \CorrectChoice@Emphasis
       \fi
+      \if@filesw
+        \immediate\write\@auxout{\string\global\string\@namedef{correctans@\the\value{question}}{\Alph{choice}}}%
+      \fi
       \ifnum\value{choice}>1\relax
         \hfill
       \fi
@@ -144,9 +156,208 @@
   }%
   {\if@correctchoice \endgroup \fi}
 
-% --- Align choices indentation with oneparchoices first choice ---
+% --- Align choices indentation with oneparchoices first choice and track answers ---
 \renewcommand{\choiceshook}{%
   \settowidth{\leftmargin}{A.\hskip\labelsep}%
   \labelwidth\leftmargin\advance\labelwidth-\labelsep
+  \if@filesw
+    \immediate\write\@auxout{\string\global\string\@namedef{mcq@isquestion@\the\value{question}}{1}}%
+  \fi
+  \let\old@CorrectChoice\CorrectChoice
+  \def\CorrectChoice{%
+    \old@CorrectChoice
+    \if@filesw
+      \immediate\write\@auxout{\string\global\string\@namedef{correctans@\the\value{question}}{\Alph{choice}}}%
+    \fi
+  }%
+  \let\correctchoice\CorrectChoice
+}
+
+% --- MCQ Answer Box Feature ---
+\newcount\mcq@i
+\newcount\mcq@j
+\newcount\mcq@col
+
+\newcommand{\mcq@char}[1]{%
+  \ifcase#1\or A\or B\or C\or D\or E\or F\or G\or H\fi
+}
+
+\newcommand{\NumChoices}[1]{\gdef\@numchoices{#1}}
+\gdef\@numchoices{4}
+
+\newcommand{\mcq@circledchar}[2][]{%
+  \tikz[baseline=(char.base)]{%
+    \node[shape=circle,draw,inner sep=1pt,minimum size=5.5mm,font=\small\bfseries,#1] (char) {#2};%
+  }%
+}
+
+\newcommand{\mcq@renderchoice}[2]{%
+  \edef\mcq@currentchar{\mcq@char{#2}}%
+  \def\mcq@iscorrect{0}%
+  \ifprintanswers
+    \@ifundefined{correctans@#1}{}{%
+      \expandafter\let\expandafter\mcq@temp\csname correctans@#1\endcsname
+      \ifx\mcq@temp\mcq@currentchar
+        \def\mcq@iscorrect{1}%
+      \fi
+    }%
+  \fi
+  \ifnum\mcq@iscorrect=1
+    \mcq@circledchar[fill=red, text=white, draw=red]{\mcq@currentchar}%
+  \else
+    \mcq@circledchar{\mcq@currentchar}%
+  \fi
+}
+
+\newcommand{\mcq@circle}{%
+  \ifnum\numquestions>0\relax
+    \begin{multicols}{2}
+    \mcq@i=1
+    \loop
+    \ifnum\mcq@i>\numquestions\else
+      \@ifundefined{mcq@isquestion@\the\mcq@i}{}{%
+        \noindent\makebox[1.2cm][l]{\textbf{\the\mcq@i.}}%
+        \makebox[4cm][l]{%
+          \mcq@j=1
+          \loop
+          \ifnum\mcq@j>\@numchoices\else
+            \ifnum\mcq@j>1\hfill\fi
+            \mcq@renderchoice{\the\mcq@i}{\the\mcq@j}%
+            \advance\mcq@j by 1
+          \repeat
+        }%
+        \par\vspace{0.15cm}%
+      }%
+      \advance\mcq@i by 1
+    \repeat
+    \end{multicols}
+  \fi
+}
+
+\newcommand{\mcq@rendertable}[1]{%
+  \begin{tabularx}{\linewidth}{#1}
+    \hline
+    \mcq@tablebody
+  \end{tabularx}%
+}
+
+\newcount\mcq@totmcq
+\newcount\mcq@numcols
+\newcount\mcq@rowcount
+
+\newcommand{\MaxMCQPerRow}[1]{\gdef\@maxmcqperrow{#1}}
+\gdef\@maxmcqperrow{10}
+
+\newcommand{\mcq@appendtobody}{%
+  \toks0=\expandafter{\mcq@currowone}%
+  \toks1=\expandafter{\mcq@currowtwo}%
+  \toks2=\expandafter{\mcq@tablebody}%
+  \xdef\mcq@tablebody{%
+    \the\toks2
+    \the\toks0 \noexpand\\ \noexpand\hline
+    \the\toks1 \noexpand\\ \noexpand\hline
+  }%
+}
+
+\newcommand{\mcq@addtocurrowone}[1]{%
+  \toks0=\expandafter{\mcq@currowone}%
+  \ifnum\mcq@rowcount=0\relax
+    \xdef\mcq@currowone{\the\toks0 \noexpand\textbf{#1}}%
+  \else
+    \xdef\mcq@currowone{\the\toks0 & \noexpand\textbf{#1}}%
+  \fi
+}
+
+\newcommand{\mcq@addtocurrowtwo}[1]{%
+  \toks0=\expandafter{\mcq@currowtwo}%
+  \ifprintanswers
+    \@ifundefined{correctans@#1}{%
+      \def\mcq@ansval{}%
+    }{%
+      \expandafter\let\expandafter\mcq@letter\csname correctans@#1\endcsname
+      \edef\mcq@ansval{\noexpand\textcolor{red}{\noexpand\textbf{\mcq@letter}}}%
+    }%
+  \else
+    \def\mcq@ansval{}%
+  \fi
+  \toks1=\expandafter{\mcq@ansval}%
+  \ifnum\mcq@rowcount=0\relax
+    \xdef\mcq@currowtwo{\the\toks0 \the\toks1}%
+  \else
+    \xdef\mcq@currowtwo{\the\toks0 & \the\toks1}%
+  \fi
+}
+
+\newcommand{\mcq@table}{%
+  \ifnum\numquestions>0\relax
+    \mcq@totmcq=0
+    \mcq@col=1
+    \loop
+    \ifnum\mcq@col>\numquestions\else
+      \@ifundefined{mcq@isquestion@\the\mcq@col}{}{%
+        \advance\mcq@totmcq by 1
+      }%
+      \advance\mcq@col by 1
+    \repeat
+    \ifnum\mcq@totmcq>0\relax
+      \mcq@numcols=\@maxmcqperrow
+      \ifnum\mcq@totmcq<\mcq@numcols
+        \mcq@numcols=\mcq@totmcq
+      \fi
+      \def\mcq@colspec{|}%
+      \mcq@col=1
+      \loop
+      \ifnum\mcq@col>\mcq@numcols\else
+        \expandafter\gdef\expandafter\mcq@colspec\expandafter{\mcq@colspec X|}%
+        \advance\mcq@col by 1
+      \repeat
+      \def\mcq@tablebody{}%
+      \def\mcq@currowone{}%
+      \def\mcq@currowtwo{}%
+      \mcq@col=1
+      \mcq@rowcount=0
+      \loop
+      \ifnum\mcq@col>\numquestions\else
+        \@ifundefined{mcq@isquestion@\the\mcq@col}{}{%
+          \expandafter\mcq@addtocurrowone\expandafter{\the\mcq@col}%
+          \expandafter\mcq@addtocurrowtwo\expandafter{\the\mcq@col}%
+          \advance\mcq@rowcount by 1
+          \ifnum\mcq@rowcount=\mcq@numcols\relax
+            \mcq@appendtobody
+            \def\mcq@currowone{}%
+            \def\mcq@currowtwo{}%
+            \mcq@rowcount=0
+          \fi
+        }%
+        \advance\mcq@col by 1
+      \repeat
+      \ifnum\mcq@rowcount>0\relax
+        \loop
+        \ifnum\mcq@rowcount<\mcq@numcols
+          \toks0=\expandafter{\mcq@currowone}%
+          \xdef\mcq@currowone{\the\toks0 &}%
+          \toks1=\expandafter{\mcq@currowtwo}%
+          \xdef\mcq@currowtwo{\the\toks1 &}%
+          \advance\mcq@rowcount by 1
+        \repeat
+        \mcq@appendtobody
+      \fi
+      \noindent
+      \expandafter\mcq@rendertable\expandafter{\mcq@colspec}%
+    \fi
+  \fi
+}
+
+\newcommand{\MCQAnswerBox}[1]{%
+  \def\mcq@arg{#1}%
+  \def\mcq@circlekey{circle}%
+  \def\mcq@fillkey{fill}%
+  \ifx\mcq@arg\mcq@circlekey
+    \mcq@circle
+  \else
+    \ifx\mcq@arg\mcq@fillkey
+      \mcq@table
+    \fi
+  \fi
 }
 
