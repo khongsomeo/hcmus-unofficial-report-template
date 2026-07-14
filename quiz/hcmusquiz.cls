@@ -95,6 +95,28 @@
 \renewcommand{\thequestion}{\bfseries\arabic{question}}
 \renewcommand{\questionlabel}{\bfseries Question \thequestion.}
 
+\RequirePackage[most]{tcolorbox}
+
+\renewenvironment{TheSolution}%
+  {%
+    \begin{tcolorbox}[
+      enhanced,
+      blanker,
+      borderline west={3pt}{0pt}{red!75!black},
+      colback=red!4!white,
+      left=10pt,
+      right=5pt,
+      top=5pt,
+      bottom=5pt,
+      before skip=10pt,
+      after skip=10pt
+    ]%
+    \noindent\textcolor{red!75!black}{\textbf{Solution:}}\enspace
+  }%
+  {%
+    \end{tcolorbox}%
+  }
+
 \SolutionEmphasis{\color{red}}
 \CorrectChoiceEmphasis{\color{red}}
 
