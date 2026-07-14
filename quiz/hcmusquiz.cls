@@ -50,6 +50,8 @@
    stepnumber=1,
    numbers=left,
    numberstyle=\small,
+   numbersep=8pt,
+   xleftmargin=20pt,
    keywordstyle=\color{blue},
    commentstyle=\color{dkgreen},
    stringstyle=\color{mauve},
@@ -76,7 +78,8 @@
 \newcommand{\CourseName}[1]{\gdef\@coursename{#1}}
 \newcommand{\ClassName}[1]{\gdef\@classname{#1}}
 \newcommand{\ExamTime}[1]{\gdef\@examtime{#1}}
-\newcommand{\CanAnswerInVietnamese}{\gdef\@canvietnamese{1}}
+\newcommand{\ExamNote}[1]{\gdef\@examnote{#1}}
+\newcommand{\CanAnswerInVietnamese}{\gdef\@examnote{Students can answer the questions in English or Vietnamese.}}
 
 % Initialize defaults
 \gdef\@examname{\dots}
@@ -84,7 +87,7 @@
 \gdef\@coursename{\dots}
 \gdef\@classname{\dots}
 \gdef\@examtime{}
-\gdef\@canvietnamese{0}
+\gdef\@examnote{}
 
 % --- Header & Footer Configuration ---
 \headrule
@@ -126,11 +129,11 @@
   \centerline{\LARGE\textbf{\@examname\ifx\@examtime\empty\else\ (\@examtime)\fi}}
   \vspace{.3cm}
   \noindent \textbf{Full name of Student:} \fillin[][8cm] \textbf{Student ID:} \fillin[][2.95cm]\par
-  \ifnum\@canvietnamese=1
-    \vspace{.3cm}
-    \centerline{\textit{\underline{Note:} Students can answer the questions in English or Vietnamese.}}\par
+  \ifx\@examnote\@empty
     \vspace{.3cm}
   \else
+    \vspace{.3cm}
+    \centerline{\textit{\underline{Note:} \@examnote}}\par
     \vspace{.3cm}
   \fi
   \vspace{-\topsep}
