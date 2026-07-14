@@ -388,14 +388,45 @@
   \fi
 }
 
-\newcommand{\MCQAnswerBox}[1]{%
-  \def\mcq@arg{#1}%
+\newcommand{\mcq@printcircleinst}{%
+  \noindent\begingroup\small
+  \textbf{Instructions for MCQ Answer Sheet (Circle Style):}
+  \begin{enumerate}
+    \itemsep=0pt
+    \item Use a pencil to fill the circle completely. Example of a filled circle: 
+      \tikz[baseline=(char.base)]{\node[shape=circle,fill=black,text=white,font=\footnotesize\bfseries,inner sep=0.8pt,minimum size=4.5mm] (char) {A};}.
+    \item There is only one valid answer for each question. Multiple answers will \textbf{not} be graded.
+  \end{enumerate}
+  \endgroup\par\vspace{0.2cm}%
+}
+
+\newcommand{\mcq@printtableinst}{%
+  \noindent\begingroup\small
+  \textbf{Instructions for MCQ Answer Sheet (Table Style):}
+  \begin{enumerate}
+    \itemsep=0pt
+    \item Write your chosen answer letter (e.g., A, B, C, D) clearly in the corresponding box below.
+    \item There is only one valid answer for each question. Multiple answers will \textbf{not} be graded.
+  \end{enumerate}
+  \endgroup\par\vspace{0.2cm}%
+}
+
+\newcommand{\MCQAnswerBox}[2][]{%
+  \def\mcq@arg{#2}%
   \def\mcq@circlekey{circle}%
   \def\mcq@fillkey{fill}%
+  \def\mcq@instkey{instruction}%
+  \def\mcq@opt{#1}%
   \ifx\mcq@arg\mcq@circlekey
+    \ifx\mcq@opt\mcq@instkey
+      \mcq@printcircleinst
+    \fi
     \mcq@circle
   \else
     \ifx\mcq@arg\mcq@fillkey
+      \ifx\mcq@opt\mcq@instkey
+        \mcq@printtableinst
+      \fi
       \mcq@table
     \fi
   \fi
