@@ -56,7 +56,16 @@
 
     \question Write your second question with a solution block here.
     \begin{solution}
-        This is the solution explanation that will be displayed when \texttt{\textbackslash printanswers} is enabled.
+        This is the solution explanation with a mathematical formula:
+        \[
+        S_n = \sum_{i=1}^{n} i = \frac{n(n + 1)}{2}
+        \]
+        And here is the corresponding C++ implementation:
+\begin{lstlisting}[language=C++]
+int sum(int n) {
+    return n * (n + 1) / 2;
+}
+\end{lstlisting}
     \end{solution}
     
     \question Write your second question with a dotted-line solution block here.
