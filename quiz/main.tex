@@ -1,0 +1,133 @@
+\documentclass[a4paper,14pt,oneside]{hcmusquiz}
+
+\ExamName{Quiz 01}
+\ExamTime{20 mins}
+\ExamDate{October 22, 2025}
+\CourseName{Data Structures and Algorithms}
+\ClassName{25C05}
+
+\ExamNote{Students can answer the questions in English or Vietnamese.}
+\MaxMCQPerRow{8}
+
+% Show answers: uncomment to display solution blocks and correct choices in red
+% \printanswers
+
+\begin{document}
+\addnamebox
+
+%####################################################################
+
+\begin{questions}
+    \addpoints
+    \question[1] Write your first question here.
+    \begin{choices}
+        \correctchoice Option A
+        \choice Option B
+        \choice Option C
+        \choice Option D
+    \end{choices}
+    
+    \question[1] Write your second question here.
+
+    \begin{oneparchoices}
+        \choice Option A
+        \correctchoice Option B
+        \choice Option C
+        \choice Option D
+    \end{oneparchoices}
+    
+    \question[1] Write your second question here.
+
+    \begin{oneparchoices}
+        \choice Option A
+        \choice Option B
+        \correctchoice Option C
+        \choice Option D
+    \end{oneparchoices}
+
+    \question[1] Write your second question here.
+
+    \begin{oneparchoices}
+        \choice Option A
+        \choice Option B
+        \choice Option C
+        \correctchoice Option D
+    \end{oneparchoices}
+
+    \question[1] Write your second question with a code block inside the question itself:
+\begin{lstlisting}[language=C++]
+// Example code inside the question itself
+void process(int x) {
+    std::cout << "Value: " << x << std::endl;
+}
+\end{lstlisting}
+    And here is the solution block:
+    \begin{solution}
+        This is the solution explanation with a mathematical formula:
+        \[
+        S_n = \sum_{i=1}^{n} i = \frac{n(n + 1)}{2}
+        \]
+        And here is the corresponding C++ implementation:
+\begin{lstlisting}[language=C++]
+int sum(int n) {
+    return n * (n + 1) / 2;
+}
+\end{lstlisting}
+    \end{solution}
+    
+    \question[1] Write your second question with a dotted-line solution block here.
+    \begin{solutionordottedlines}[1.5cm]
+        This is the solution explanation that will be displayed when \texttt{\textbackslash printanswers} is enabled, and dotted lines will be shown otherwise.
+    \end{solutionordottedlines}
+
+    \question[1] Write your second question here.
+
+    \begin{oneparchoices}
+        \choice Option A
+        \choice Option B
+        \correctchoice Option C
+        \choice Option D
+    \end{oneparchoices}
+    
+    \question[1] Write your second question here.
+
+    \begin{oneparchoices}
+        \choice Option A
+        \choice Option B
+        \correctchoice Option C
+        \choice Option D
+    \end{oneparchoices}
+    
+    \question[1] Write your second question here.
+
+    \begin{oneparchoices}
+        \choice Option A
+        \correctchoice Option B
+        \choice Option C
+        \choice Option D
+    \end{oneparchoices}
+    
+    \question[1] Write your second question here.
+
+    \begin{oneparchoices}
+        \choice Option A
+        \choice Option B
+        \choice Option C
+        \correctchoice Option D
+    \end{oneparchoices}
+
+\end{questions}
+\vfill
+
+\section*{MCQ Answer Sheet (Circle Style)}
+\MCQAnswerBox[instruction]{circle}
+
+\vspace{0.5cm}
+
+\section*{MCQ Answer Sheet (Table Style)}
+\MCQAnswerBox[instruction]{fill}
+
+\vfill
+\headline{END}
+
+\end{document}
