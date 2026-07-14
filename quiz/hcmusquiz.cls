@@ -72,6 +72,9 @@
     filecolor=VioletRed
 }
 
+% --- Answer Color Definition ---
+\colorlet{AnswerColor}{red!75!black}
+
 % --- Parameter Definitions ---
 \newcommand{\ExamName}[1]{\gdef\@examname{#1}}
 \newcommand{\ExamDate}[1]{\gdef\@examdate{#1}}
@@ -105,7 +108,7 @@
     \begin{tcolorbox}[
       enhanced,
       blanker,
-      borderline west={3pt}{0pt}{red!75!black},
+      borderline west={3pt}{0pt}{AnswerColor},
       colback=red!4!white,
       left=10pt,
       right=5pt,
@@ -114,14 +117,14 @@
       before skip=10pt,
       after skip=10pt
     ]%
-    \noindent\textcolor{red!75!black}{\textbf{Solution:}}\enspace
+    \noindent\textcolor{AnswerColor}{\textbf{Solution:}}\enspace
   }%
   {%
     \end{tcolorbox}%
   }
 
-\SolutionEmphasis{\color{red}}
-\CorrectChoiceEmphasis{\color{red}}
+\SolutionEmphasis{\color{AnswerColor}}
+\CorrectChoiceEmphasis{\color{AnswerColor}}
 
 % --- Student Identity Header Box ---
 \newcommand{\addnamebox}{%
@@ -143,7 +146,7 @@
 % --- Circled correct choice label for answer key mode ---
 \newcommand{\mcq@circledlabel}[1]{%
   \tikz[baseline=(char.base)]{%
-    \node[shape=circle,draw,inner sep=0.8pt,minimum size=4.8mm,font=\footnotesize\bfseries,fill=red,text=white,draw=red] (char) {#1};%
+    \node[shape=circle,draw,inner sep=0.8pt,minimum size=4.8mm,font=\footnotesize\bfseries,fill=AnswerColor,text=white,draw=AnswerColor] (char) {#1};%
   }%
 }
 
@@ -243,7 +246,7 @@
     }%
   \fi
   \ifnum\mcq@iscorrect=1
-    \mcq@circledchar[fill=red, text=white, draw=red]{\mcq@currentchar}%
+    \mcq@circledchar[fill=AnswerColor, text=white, draw=AnswerColor]{\mcq@currentchar}%
   \else
     \mcq@circledchar{\mcq@currentchar}%
   \fi
@@ -315,7 +318,7 @@
       \def\mcq@ansval{}%
     }{%
       \expandafter\let\expandafter\mcq@letter\csname correctans@#1\endcsname
-      \edef\mcq@ansval{\noexpand\textcolor{red}{\noexpand\textbf{\mcq@letter}}}%
+      \edef\mcq@ansval{\noexpand\textcolor{AnswerColor}{\noexpand\textbf{\mcq@letter}}}%
     }%
   \else
     \def\mcq@ansval{}%
