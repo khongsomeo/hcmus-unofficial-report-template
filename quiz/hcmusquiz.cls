@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hcmusexam}[2026/07/14 Unofficial Exam Class for HCMUS]
+\ProvidesClass{hcmusquiz}[2026/07/14 Unofficial Quiz Class for HCMUS]
 \PassOptionsToPackage{dvipsnames}{xcolor}
 
 % --- Option Passing ---

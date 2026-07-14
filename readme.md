@@ -24,7 +24,7 @@ This repository provides LaTeX templates designed for students and researchers a
 | **Course Report** | [report/](report) | [![Overleaf](https://img.shields.io/badge/Overleaf-Template-35713B?style=flat&logo=Overleaf&logoColor=white)](https://www.overleaf.com/latex/templates/hcmus-report-template/zyrhmsxynwqs) | [Report Guide](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki/Report) |
 | **Master's Thesis** | [thesis/master/](thesis/master) | — | [Thesis Guide](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki/Master-Thesis) |
 | **Scientific Project** | [scientific-research/project-report/](scientific-research/project-report) <br> [scientific-research/acceptance-form/](scientific-research/acceptance-form) <br> [scientific-research/product-report/](scientific-research/product-report) | — | [Project Guide](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki/Scientific-Project) |
-| **Exam/Quiz** | [exam/](exam) | — | [Exam Guide](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki/Exam) |
+| **Quiz** | [quiz/](quiz) | — | [Quiz Guide](https://github.com/khongsomeo/hcmus-unofficial-report-template/wiki/Quiz) |
 
 ---
 
