@@ -115,6 +115,21 @@
   \vspace{-\partopsep}
 }
 
+% --- Circled correct choice label for answer key mode ---
+\newcommand{\mcq@circledlabel}[1]{%
+  \tikz[baseline=(char.base)]{%
+    \node[shape=circle,draw,inner sep=0.8pt,minimum size=4.8mm,font=\footnotesize\bfseries,fill=red,text=white,draw=red] (char) {#1};%
+  }%
+}
+
+\renewcommand{\choicelabel}{%
+  \if@correctchoice
+    \mcq@circledlabel{\Alph{choice}}%
+  \else
+    \thechoice.%
+  \fi
+}
+
 % --- Equalize spacing between choices in oneparchoices ---
 \renewenvironment{oneparchoices}%
   {%
