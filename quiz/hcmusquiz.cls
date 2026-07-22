@@ -199,22 +199,45 @@
   }%
   {\if@correctchoice \endgroup \fi}
 
-% --- Align choices indentation with oneparchoices first choice and track answers ---
-\renewcommand{\choiceshook}{%
-  \settowidth{\leftmargin}{A.\hskip\labelsep}%
-  \labelwidth\leftmargin\advance\labelwidth-\labelsep
-  \if@filesw
-    \immediate\write\@auxout{\string\global\string\@namedef{mcq@isquestion@\the\value{question}}{1}}%
-  \fi
-  \let\old@CorrectChoice\CorrectChoice
-  \def\CorrectChoice{%
-    \old@CorrectChoice
-    \if@filesw
-      \immediate\write\@auxout{\string\global\string\@namedef{correctans@\the\value{question}}{\Alph{choice}}}%
-    \fi
+% --- Custom choices environment to ensure circled correct choice labels render correctly ---
+\renewenvironment{choices}%
+  {\list{\choicelabel}%
+     {\usecounter{choice}%
+      \let\old@item\item
+      \def\item{%
+        \old@item
+        \def\makelabel####1{\hss\llap{####1}}%
+      }% item
+      \settowidth{\leftmargin}{A.\hskip\labelsep}%
+      \labelwidth\leftmargin\advance\labelwidth-\labelsep
+      \if@filesw
+        \immediate\write\@auxout{\string\global\string\@namedef{mcq@isquestion@\the\value{question}}{1}}%
+      \fi
+      \def\choice{%
+        \if@correctchoice \color@endgroup \endgroup \fi
+        \item
+        \do@choice@pageinfo
+      }% choice
+      \def\CorrectChoice{%
+        \if@correctchoice \color@endgroup \endgroup \fi
+        \ifprintanswers
+          \ifhmode \unskip\unskip\unvbox\voidb@x \fi
+          \begingroup \color@begingroup \@correctchoicetrue
+          \CorrectChoice@Emphasis
+        \fi
+        \item
+        \do@choice@pageinfo
+        \if@filesw
+          \immediate\write\@auxout{\string\global\string\@namedef{correctans@\the\value{question}}{\Alph{choice}}}%
+        \fi
+      }% CorrectChoice
+      \let\correctchoice\CorrectChoice
+      \choiceshook
+     }%
   }%
-  \let\correctchoice\CorrectChoice
-}
+  {\if@correctchoice \color@endgroup \endgroup \fi \endlist}
+
+\renewcommand{\choiceshook}{}
 
 % --- MCQ Answer Box Feature ---
 \newcount\mcq@i
