@@ -243,6 +243,7 @@
 \newcount\mcq@i
 \newcount\mcq@j
 \newcount\mcq@col
+\newcount\mcq@numq
 
 \newcommand{\mcq@char}[1]{%
   \ifcase#1\or A\or B\or C\or D\or E\or F\or G\or H\fi
@@ -276,17 +277,18 @@
 }
 
 \newcommand{\mcq@circle}{%
-  \ifnum\numquestions>0\relax
-    \begin{multicols}{2}
+  \@ifundefined{exam@numquestions}{\mcq@numq=0}{\mcq@numq=\exam@numquestions\relax}%
+  \ifnum\mcq@numq>0\relax
+    \begin{multicols}{\mcq@opt@cols}
     \mcq@i=1
     \loop
-    \ifnum\mcq@i>\numquestions\else
+    \ifnum\mcq@i>\mcq@numq\else
       \@ifundefined{mcq@isquestion@\the\mcq@i}{}{%
         \noindent\makebox[1.2cm][l]{\textbf{\the\mcq@i.}}%
-        \makebox[4cm][l]{%
+        \makebox[\mcq@opt@width][l]{%
           \mcq@j=1
           \loop
-          \ifnum\mcq@j>\@numchoices\else
+          \ifnum\mcq@j>\mcq@opt@choices\else
             \ifnum\mcq@j>1\hfill\fi
             \mcq@renderchoice{\the\mcq@i}{\the\mcq@j}%
             \advance\mcq@j by 1
@@ -310,9 +312,6 @@
 \newcount\mcq@totmcq
 \newcount\mcq@numcols
 \newcount\mcq@rowcount
-
-\newcommand{\MaxMCQPerRow}[1]{\gdef\@maxmcqperrow{#1}}
-\gdef\@maxmcqperrow{10}
 
 \newcommand{\mcq@appendtobody}{%
   \toks0=\expandafter{\mcq@currowone}%
@@ -355,18 +354,19 @@
 }
 
 \newcommand{\mcq@table}{%
-  \ifnum\numquestions>0\relax
+  \@ifundefined{exam@numquestions}{\mcq@numq=0}{\mcq@numq=\exam@numquestions\relax}%
+  \ifnum\mcq@numq>0\relax
     \mcq@totmcq=0
     \mcq@col=1
     \loop
-    \ifnum\mcq@col>\numquestions\else
+    \ifnum\mcq@col>\mcq@numq\else
       \@ifundefined{mcq@isquestion@\the\mcq@col}{}{%
         \advance\mcq@totmcq by 1
       }%
       \advance\mcq@col by 1
     \repeat
     \ifnum\mcq@totmcq>0\relax
-      \mcq@numcols=\@maxmcqperrow
+      \mcq@numcols=\mcq@opt@maxperrow
       \ifnum\mcq@totmcq<\mcq@numcols
         \mcq@numcols=\mcq@totmcq
       \fi
@@ -383,7 +383,7 @@
       \mcq@col=1
       \mcq@rowcount=0
       \loop
-      \ifnum\mcq@col>\numquestions\else
+      \ifnum\mcq@col>\mcq@numq\else
         \@ifundefined{mcq@isquestion@\the\mcq@col}{}{%
           \expandafter\mcq@addtocurrowone\expandafter{\the\mcq@col}%
           \expandafter\mcq@addtocurrowtwo\expandafter{\the\mcq@col}%
@@ -437,20 +437,36 @@
   \endgroup\par\vspace{0.2cm}%
 }
 
+\pgfkeys{
+  /mcq/.is family, /mcq,
+  cols/.estore in = \mcq@opt@cols,
+  width/.estore in = \mcq@opt@width,
+  choices/.estore in = \mcq@opt@choices,
+  maxperrow/.estore in = \mcq@opt@maxperrow,
+  instruction/.code = {\def\mcq@opt@instruction{true}},
+  noinstruction/.code = {\def\mcq@opt@instruction{false}},
+}
+
 \newcommand{\MCQAnswerBox}[2][]{%
+  \def\mcq@opt@cols{2}%
+  \def\mcq@opt@width{4cm}%
+  \def\mcq@opt@choices{\@numchoices}%
+  \def\mcq@opt@maxperrow{10}%
+  \def\mcq@opt@instruction{false}%
+  \pgfkeys{/mcq, #1}%
   \def\mcq@arg{#2}%
   \def\mcq@circlekey{circle}%
   \def\mcq@fillkey{fill}%
-  \def\mcq@instkey{instruction}%
-  \def\mcq@opt{#1}%
   \ifx\mcq@arg\mcq@circlekey
-    \ifx\mcq@opt\mcq@instkey
+    \def\mcq@temptrue{true}%
+    \ifx\mcq@opt@instruction\mcq@temptrue
       \mcq@printcircleinst
     \fi
     \mcq@circle
   \else
     \ifx\mcq@arg\mcq@fillkey
-      \ifx\mcq@opt\mcq@instkey
+      \def\mcq@temptrue{true}%
+      \ifx\mcq@opt@instruction\mcq@temptrue
         \mcq@printtableinst
       \fi
       \mcq@table
