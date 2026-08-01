@@ -15,6 +15,14 @@ This repository provides LaTeX templates designed for students and researchers a
 > 
 > If it compiles and breaks, you get to keep both pieces. To report bugs or offer therapy to the maintainers, please open an issue or write to `thquan (at) fit.hcmus.edu.vn`.
 
+> [!WARNING]
+> **Overleaf Free Tier Timeouts (or: "Please buy our Pro subscription")**
+> Because these templates (especially the Master's Thesis template) are quite heavy, compiling them on Overleaf's free tier might run you straight into a **"Time Limit Exceeded"** screen. This is a carefully designed feature by Overleaf to encourage you to donate to their subscription fund.
+> 
+> If you'd rather keep your money for coffee (or therapy), we highly recommend:
+> - **Going Local**: Set it up on your own machine using a standard LaTeX distribution (TeX Live, MiKTeX, MacTeX) and a local editor (TeXstudio, VS Code). It builds in seconds and doesn't charge you for time.
+> - **Using Alternatives**: Switch to alternative compilation platforms like **Prism** that won't hold your document hostage over compilation time.
+
 ---
 
 ## 🗂️ Available Templates
