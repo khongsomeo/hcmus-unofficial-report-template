@@ -330,19 +330,22 @@
   \end{thesisinfo}
   \vspace{-30pt}
 }{%
-  \vspace{0.5cm}%
-  \begin{minipage}[h]{.50\textwidth}
-      \centering
-      \MakeUppercase{\bfseries tập thể cán bộ hướng dẫn}
+  \par\vspace{0.5cm}%
+  \noindent
+  \begin{minipage}{\textwidth}
+    \begin{minipage}[h]{.50\textwidth}
+        \centering
+        \MakeUppercase{\bfseries tập thể cán bộ hướng dẫn}
+    \end{minipage}%
+    \begin{minipage}[h]{.45\textwidth}
+        \centering
+        \MakeUppercase{\bfseries học viên cao học}
+    \end{minipage}
+    \vspace{3.5cm}
+    \begin{center}
+        \MakeUppercase{\bfseries xác nhận của cơ sở đào tạo\\hiệu trưởng}
+    \end{center}
   \end{minipage}
-  \begin{minipage}[h]{.45\textwidth}
-      \centering
-      \MakeUppercase{\bfseries học viên cao học}
-  \end{minipage}
-  \vspace{3.5cm}
-  \begin{center}
-      \MakeUppercase{\bfseries xác nhận của cơ sở đào tạo\\hiệu trưởng}
-  \end{center}
   \pagebreak
 }
 
@@ -376,19 +379,22 @@
   \vspace{-30pt}
   \setcounter{section}{0}
 }{%
-  \vspace{0.5cm}%
-  \begin{minipage}[h]{.50\textwidth}
-      \centering
-      \MakeUppercase{\bfseries supervisor}
+  \par\vspace{0.5cm}%
+  \noindent
+  \begin{minipage}{\textwidth}
+    \begin{minipage}[h]{.50\textwidth}
+        \centering
+        \MakeUppercase{\bfseries supervisor}
+    \end{minipage}%
+    \begin{minipage}[h]{.45\textwidth}
+        \centering
+        {\bfseries Master \MakeUppercase{student}}
+    \end{minipage}
+    \vspace{3.5cm}
+    \begin{center}
+        \MakeUppercase{\bfseries certification \\ university of science \\ president}
+    \end{center}
   \end{minipage}
-  \begin{minipage}[h]{.45\textwidth}
-      \centering
-      {\bfseries Master \MakeUppercase{student}}
-  \end{minipage}
-  \vspace{3.5cm}
-  \begin{center}
-      \MakeUppercase{\bfseries certification \\ university of science \\ president}
-  \end{center}
 }
 
 % Môi trường các phần nội dung Tiếng Anh
